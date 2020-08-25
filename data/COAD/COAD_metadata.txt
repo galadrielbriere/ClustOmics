@@ -1,0 +1,305 @@
+main_node	property	node	node	node	node	node	label	label	label	label
+Patient	age_at_initial_pathologic_diagnosis	gender	pathologic_M	pathologic_N	pathologic_T	pathologic_stage	expression	mirna	methylation	multiomics
+TCGA.3L.AA1B.01	61	FEMALE	M0	N0	T2	I	expression		methylation	
+TCGA.4N.A93T.01	67	MALE	M0	N1	T4	IIIB	expression		methylation	
+TCGA.4T.AA8H.01	42	FEMALE	MX	N0	T3	IIA	expression		methylation	
+TCGA.5M.AAT4.01	74	MALE	M1	N0	T3	IV	expression		methylation	
+TCGA.5M.AAT5.01	NA	NA	NA	NA	NA	NA	expression		methylation	
+TCGA.5M.AAT6.01	40	FEMALE	M1	N2	T4	IV	expression		methylation	
+TCGA.5M.AATA.01	NA	NA	NA	NA	NA	NA	expression		methylation	
+TCGA.5M.AATE.01	76	MALE	M0	N0	T3	IIA	expression		methylation	
+TCGA.A6.2671.01	85	MALE	M1	N2	T3	IV			methylation	
+TCGA.A6.2675.01	78	MALE	MX	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.A6.2677.01	68	FEMALE	M0	N2	T3	IIIC			methylation	
+TCGA.A6.2679.01	73	FEMALE	NA	N0	T3	IIB			methylation	
+TCGA.A6.2680.01	72	FEMALE	M0	N0	T3	II			methylation	
+TCGA.A6.2681.01	73	FEMALE	M0	N0	T3	IIA			methylation	
+TCGA.A6.2682.01	70	MALE	M1	N1	T4	IV	expression		methylation	
+TCGA.A6.2684.01	75	FEMALE	M0	N0	T2	I	expression		methylation	
+TCGA.A6.2685.01	48	FEMALE	M0	N0	T3	IIA	expression		methylation	
+TCGA.A6.2686.01	81	FEMALE	M0	N0	T3	IIA	expression		methylation	
+TCGA.A6.3809.01	71	FEMALE	M0	N0	T4	IIB			methylation	
+TCGA.A6.3810.01	62	MALE	M0	N0	T3	IIA			methylation	
+TCGA.A6.4105.01	79	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.A6.4107.01	57	FEMALE	M0	N1	T3	IIIB			methylation	
+TCGA.A6.5656.01	74	MALE	M0	N0	T2	I	expression	mirna	methylation	multiomics
+TCGA.A6.5657.01	65	MALE	M0	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.A6.5659.01	82	MALE	M0	N0	T2	I	expression	mirna	methylation	multiomics
+TCGA.A6.5660.01	73	MALE	M0	N2	T3	IIIC	expression	mirna	methylation	multiomics
+TCGA.A6.5661.01	80	FEMALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.A6.5662.01	46	MALE	M1	N2	T3	IVA	expression	mirna	methylation	multiomics
+TCGA.A6.5664.01	80	MALE	MX	N2	T4	IIIC	expression	mirna	methylation	multiomics
+TCGA.A6.5665.01	84	FEMALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.A6.5666.01	78	MALE	M0	N0	T4	IIC	expression	mirna	methylation	multiomics
+TCGA.A6.5667.01	40	FEMALE	MX	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.A6.6137.01	55	MALE	M0	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.A6.6138.01	61	MALE	M0	N0	T2	I	expression	mirna	methylation	multiomics
+TCGA.A6.6140.01	62	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.A6.6141.01	31	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.A6.6142.01	56	FEMALE	M1	N1	T3	IVA	expression	mirna	methylation	multiomics
+TCGA.A6.6648.01	56	MALE	M1	N0	T3	IVA	expression	mirna	methylation	multiomics
+TCGA.A6.6649.01	66	MALE	M0	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.A6.6650.01	69	FEMALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.A6.6651.01	55	FEMALE	MX	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.A6.6652.01	59	MALE	M1	N0	T3	IVA	expression	mirna	methylation	multiomics
+TCGA.A6.6653.01	82	MALE	M0	N0	T2	I	expression	mirna	methylation	multiomics
+TCGA.A6.6654.01	65	FEMALE	M0	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.A6.6780.01	74	MALE	MX	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.A6.6781.01	43	MALE	MX	N1	T4	IIIC	expression	mirna	methylation	multiomics
+TCGA.A6.6782.01	82	MALE	MX	N0	T4	IIB	expression	mirna	methylation	multiomics
+TCGA.A6.A565.01	34	FEMALE	MX	N2	T3	IIIC	expression		methylation	
+TCGA.A6.A566.01	55	FEMALE	M0	N1	T4	IIIB	expression		methylation	
+TCGA.A6.A567.01	56	MALE	M1	N1	T3	IV	expression		methylation	
+TCGA.A6.A56B.01	57	MALE	M0	N1	T3	IIIB	expression		methylation	
+TCGA.A6.A5ZU.01	59	MALE	M0	N1	T3	IIIB	expression		methylation	
+TCGA.AA.3488.01	58	MALE	M1	N2	T3	IV			methylation	
+TCGA.AA.3489.01	75	MALE	M0	N0	T3	II	expression	mirna	methylation	multiomics
+TCGA.AA.3492.01	90	FEMALE	M0	N0	T3	II	expression		methylation	
+TCGA.AA.3494.01	55	MALE	M1	N0	T3	IV			methylation	
+TCGA.AA.3495.01	79	MALE	M0	N0	T2	I	expression		methylation	
+TCGA.AA.3496.01	83	FEMALE	M0	N0	T3	II	expression	mirna	methylation	multiomics
+TCGA.AA.3502.01	73	MALE	M0	N0	T2	I	expression		methylation	
+TCGA.AA.3506.01	77	MALE	M0	N0	T2	I	expression		methylation	
+TCGA.AA.3509.01	54	FEMALE	M0	N0	T3	II	expression		methylation	
+TCGA.AA.3510.01	70	MALE	M0	N0	T3	II			methylation	
+TCGA.AA.3511.01	64	MALE	M0	N0	T4	II	expression	mirna	methylation	multiomics
+TCGA.AA.3526.01	57	MALE	M0	N0	T2	I	expression			
+TCGA.AA.3655.01	68	MALE	M0	N0	T3	II	expression	mirna	methylation	multiomics
+TCGA.AA.3660.01	51	FEMALE	M0	N0	T3	II	expression	mirna	methylation	multiomics
+TCGA.AA.3662.01	80	FEMALE	M1	N2	T4	IV	expression	mirna	methylation	multiomics
+TCGA.AA.3663.01	42	MALE	M0	N0	T3	II	expression	mirna	methylation	multiomics
+TCGA.AA.3675.01	84	MALE	M0	N0	T3	II	expression			
+TCGA.AA.3685.01	69	MALE	M0	N0	T3	II	expression			
+TCGA.AA.3697.01	77	MALE	M0	N0	T3	II	expression	mirna	methylation	multiomics
+TCGA.AA.3712.01	65	MALE	M0	N2	T3	III	expression	mirna	methylation	multiomics
+TCGA.AA.3713.01	68	MALE	M1	N0	T3	IV	expression	mirna	methylation	multiomics
+TCGA.AA.A01P.01	80	FEMALE	M0	N1	T3	III	expression			
+TCGA.AA.A01X.01	80	FEMALE	M0	N1	T2	III	expression			
+TCGA.AA.A01Z.01	68	MALE	M0	N0	T3	II	expression			
+TCGA.AA.A02K.01	50	MALE	M1	N2	T4	IV	expression			
+TCGA.AA.A02Y.01	73	MALE	M0	N0	T2	I	expression			
+TCGA.AD.5900.01	67	MALE	MX	N0	T2	I	expression	mirna	methylation	multiomics
+TCGA.AD.6548.01	81	FEMALE	M0	N0	T2	I	expression	mirna	methylation	multiomics
+TCGA.AD.6888.01	73	MALE	M0	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.AD.6889.01	76	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.AD.6890.01	65	MALE	MX	N0	T1	NA	expression	mirna	methylation	multiomics
+TCGA.AD.6895.01	84	MALE	M0	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.AD.6899.01	84	MALE	MX	N2	T4	IIIC	expression	mirna	methylation	multiomics
+TCGA.AD.6901.01	78	MALE	MX	N0	T3	NA	expression	mirna	methylation	multiomics
+TCGA.AD.6963.01	58	MALE	MX	N0	T3	NA	expression	mirna	methylation	multiomics
+TCGA.AD.6964.01	58	MALE	NA	N2	T4	NA	expression	mirna	methylation	multiomics
+TCGA.AD.6965.01	62	MALE	M0	N2	T4	IIIC	expression	mirna	methylation	multiomics
+TCGA.AD.A5EJ.01	74	FEMALE	MX	N0	T3	IIA	expression		methylation	
+TCGA.AD.A5EK.01	51	MALE	MX	N0	T2	I	expression		methylation	
+TCGA.AM.5820.01	59	FEMALE	M1	N2	T4	IVA	expression	mirna	methylation	multiomics
+TCGA.AM.5821.01	68	FEMALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.AU.3779.01	80	FEMALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.AU.6004.01	69	FEMALE	M0	N0	T2	I	expression	mirna	methylation	multiomics
+TCGA.AY.5543.01	65	FEMALE	M1	N1	T3	IVA	expression	mirna	methylation	multiomics
+TCGA.AY.6196.01	47	MALE	NA	N2	T3	IIIC	expression	mirna	methylation	multiomics
+TCGA.AY.6197.01	60	MALE	NA	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.AY.6386.01	66	FEMALE	M0	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.AY.A54L.01	74	FEMALE	M0	N0	T2	I	expression		methylation	
+TCGA.AY.A69D.01	55	FEMALE	M0	N0	T3	IIA	expression		methylation	
+TCGA.AY.A71X.01	54	FEMALE	M0	N0	T2	I	expression		methylation	
+TCGA.AY.A8YK.01	44	MALE	M1	N2	T3	IVA	expression		methylation	
+TCGA.AZ.4308.01	47	FEMALE	M0	N1	T3	IIIB			methylation	
+TCGA.AZ.4313.01	51	FEMALE	M0	N0	T1	I	expression		methylation	
+TCGA.AZ.4315.01	61	MALE	M0	N0	T3	IIA	expression		methylation	
+TCGA.AZ.4323.01	37	MALE	M1	N2	T4	IV	expression	mirna	methylation	multiomics
+TCGA.AZ.4614.01	71	FEMALE	M1	N1	T4	IVA	expression		methylation	
+TCGA.AZ.4615.01	84	MALE	M0	N1	T3	IIIB	expression		methylation	
+TCGA.AZ.4616.01	82	FEMALE	M1	N2	T3	IV	expression	mirna	methylation	multiomics
+TCGA.AZ.4681.01	79	FEMALE	M0	N0	T3	IIA			methylation	
+TCGA.AZ.4682.01	61	MALE	M1	N0	T3	IVA	expression		methylation	
+TCGA.AZ.4684.01	49	MALE	M1	N2	T3	IVA	expression		methylation	
+TCGA.AZ.5403.01	43	MALE	MX	N0	T3	II	expression	mirna	methylation	multiomics
+TCGA.AZ.5407.01	51	FEMALE	M0	N0	T1	I	expression	mirna	methylation	multiomics
+TCGA.AZ.6598.01	77	FEMALE	MX	N0	T3	II	expression	mirna	methylation	multiomics
+TCGA.AZ.6599.01	72	MALE	MX	N0	T2	I	expression	mirna	methylation	multiomics
+TCGA.AZ.6600.01	64	MALE	M1	N1	T4	IV	expression	mirna	methylation	multiomics
+TCGA.AZ.6601.01	68	MALE	M0	N0	T3	II	expression	mirna	methylation	multiomics
+TCGA.AZ.6603.01	77	FEMALE	MX	N1	T2	NA	expression	mirna	methylation	multiomics
+TCGA.AZ.6605.01	77	MALE	M0	N1	T4	IIIB	expression	mirna	methylation	multiomics
+TCGA.AZ.6606.01	81	MALE	M1	N2	T4	IV	expression	mirna	methylation	multiomics
+TCGA.AZ.6607.01	69	MALE	M1	N2	T4	IV	expression	mirna	methylation	multiomics
+TCGA.AZ.6608.01	55	FEMALE	M0	N1	T2	IIIA	expression	mirna	methylation	multiomics
+TCGA.CA.5254.01	42	FEMALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.CA.5255.01	45	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.CA.5256.01	54	FEMALE	M0	N0	T3	IIA	expression		methylation	
+TCGA.CA.5796.01	52	FEMALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.CA.5797.01	56	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.CA.6715.01	63	MALE	M0	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.CA.6716.01	65	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.CA.6717.01	57	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.CA.6718.01	46	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.CA.6719.01	77	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.CK.4947.01	46	FEMALE	M0	N1	T4	IIIB	expression	mirna	methylation	multiomics
+TCGA.CK.4948.01	45	FEMALE	M0	N1	T3	III	expression	mirna	methylation	multiomics
+TCGA.CK.4950.01	68	FEMALE	M0	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.CK.4951.01	79	FEMALE	M0	N0	T3	IIA	expression		methylation	
+TCGA.CK.4952.01	48	FEMALE	M0	N2	T4	IIIC	expression	mirna	methylation	multiomics
+TCGA.CK.5912.01	81	MALE	MX	N0	T2	I	expression	mirna	methylation	multiomics
+TCGA.CK.5913.01	58	FEMALE	MX	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.CK.5914.01	81	MALE	MX	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.CK.5915.01	63	MALE	MX	N0	T2	I	expression	mirna	methylation	multiomics
+TCGA.CK.5916.01	71	FEMALE	M0	N0	T1	I	expression	mirna	methylation	multiomics
+TCGA.CK.6746.01	84	FEMALE	MX	N0	T4	IIB	expression	mirna	methylation	multiomics
+TCGA.CK.6747.01	87	FEMALE	MX	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.CK.6748.01	45	FEMALE	M1	N1	T3	IV	expression	mirna	methylation	multiomics
+TCGA.CK.6751.01	88	FEMALE	MX	N0	T2	I	expression	mirna	methylation	multiomics
+TCGA.CM.4743.01	69	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.CM.4744.01	69	MALE	M0	N0	T2	I	expression		methylation	
+TCGA.CM.4746.01	61	MALE	M0	N0	T2	I			methylation	
+TCGA.CM.4747.01	47	MALE	M1	N1	T4	IVA	expression		methylation	
+TCGA.CM.4748.01	53	MALE	M0	N1	T4	IIIB			methylation	
+TCGA.CM.4750.01	34	FEMALE	M0	N1	T1	IIIA			methylation	
+TCGA.CM.4751.01	62	MALE	M0	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.CM.4752.01	58	MALE	M0	N0	T3	IIA			methylation	
+TCGA.CM.5341.01	82	FEMALE	M0	N1	T2	IIIA			methylation	
+TCGA.CM.5344.01	39	FEMALE	M0	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.CM.5348.01	72	MALE	M0	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.CM.5349.01	68	FEMALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.CM.5860.01	44	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.CM.5861.01	63	FEMALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.CM.5862.01	80	MALE	M1	N1	T3	IVA	expression	mirna	methylation	multiomics
+TCGA.CM.5863.01	60	FEMALE	M0	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.CM.5864.01	60	MALE	M0	N0	T2	I	expression	mirna	methylation	multiomics
+TCGA.CM.5868.01	59	FEMALE	M1	N1	T4	IVA	expression	mirna	methylation	multiomics
+TCGA.CM.6161.01	36	FEMALE	M0	N0	T2	I	expression	mirna	methylation	multiomics
+TCGA.CM.6162.01	48	FEMALE	M0	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.CM.6163.01	74	MALE	M0	N0	T1	I	expression	mirna	methylation	multiomics
+TCGA.CM.6164.01	46	FEMALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.CM.6165.01	74	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.CM.6166.01	48	FEMALE	M0	N0	T2	I	expression	mirna	methylation	multiomics
+TCGA.CM.6167.01	57	FEMALE	M0	N2	T3	IIIC	expression	mirna	methylation	multiomics
+TCGA.CM.6168.01	84	FEMALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.CM.6169.01	67	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.CM.6170.01	73	FEMALE	M0	N0	T2	I	expression	mirna	methylation	multiomics
+TCGA.CM.6171.01	77	FEMALE	M0	N0	T2	I	expression	mirna	methylation	multiomics
+TCGA.CM.6172.01	70	FEMALE	M0	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.CM.6674.01	39	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.CM.6675.01	35	MALE	M1	N2	T3	IVB	expression	mirna	methylation	multiomics
+TCGA.CM.6676.01	82	MALE	M0	N0	T2	I	expression	mirna	methylation	multiomics
+TCGA.CM.6677.01	75	FEMALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.CM.6678.01	63	FEMALE	M1	N1	T4	IVA	expression	mirna	methylation	multiomics
+TCGA.CM.6679.01	58	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.CM.6680.01	78	FEMALE	M0	N2	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.D5.5537.01	83	MALE	MX	N2	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.D5.5538.01	60	FEMALE	M0	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.D5.5539.01	60	MALE	M0	N1	T3	IIIA	expression	mirna	methylation	multiomics
+TCGA.D5.5540.01	73	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.D5.5541.01	63	MALE	M0	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.D5.6529.01	69	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.D5.6530.01	53	MALE	M0	N0	T2	I	expression	mirna	methylation	multiomics
+TCGA.D5.6531.01	75	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.D5.6532.01	61	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.D5.6533.01	68	FEMALE	M0	N0	T4	NA	expression	mirna	methylation	multiomics
+TCGA.D5.6534.01	62	FEMALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.D5.6535.01	80	FEMALE	MX	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.D5.6536.01	73	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.D5.6537.01	64	MALE	MX	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.D5.6538.01	79	FEMALE	M0	N2	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.D5.6539.01	45	FEMALE	M0	N0	T3	NA	expression	mirna	methylation	multiomics
+TCGA.D5.6540.01	66	MALE	M0	N0	T2	I	expression	mirna	methylation	multiomics
+TCGA.D5.6541.01	49	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.D5.6898.01	51	FEMALE	M0	N0	T2	I	expression	mirna	methylation	multiomics
+TCGA.D5.6920.01	77	FEMALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.D5.6922.01	76	MALE	M0	N1	T3	IIIA	expression	mirna	methylation	multiomics
+TCGA.D5.6923.01	57	MALE	M0	N0	T2	I	expression	mirna	methylation	multiomics
+TCGA.D5.6924.01	68	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.D5.6926.01	65	MALE	M0	N1	T4	IIIB	expression	mirna	methylation	multiomics
+TCGA.D5.6927.01	34	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.D5.6928.01	80	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.D5.6929.01	49	FEMALE	M1	N1	T3	IV	expression	mirna	methylation	multiomics
+TCGA.D5.6930.01	67	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.D5.6931.01	77	MALE	M0	N2	T4	IIIC	expression	mirna	methylation	multiomics
+TCGA.D5.6932.01	69	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.D5.7000.01	79	FEMALE	M0	N0	T2	I	expression	mirna	methylation	multiomics
+TCGA.DM.A0X9.01	71	FEMALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.DM.A0XD.01	65	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.DM.A0XF.01	68	FEMALE	M0	N2	T3	IIIC	expression	mirna	methylation	multiomics
+TCGA.DM.A1D0.01	79	FEMALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.DM.A1D4.01	80	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.DM.A1D6.01	88	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.DM.A1D7.01	82	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.DM.A1D8.01	50	FEMALE	NA	N1	T3	NA	expression	mirna	methylation	multiomics
+TCGA.DM.A1D9.01	67	FEMALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.DM.A1DA.01	71	FEMALE	M0	N2	T3	IIIC	expression	mirna	methylation	multiomics
+TCGA.DM.A1DB.01	68	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.DM.A1HA.01	82	MALE	M0	N2	T3	IIIC	expression	mirna	methylation	multiomics
+TCGA.DM.A1HB.01	75	MALE	M0	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.DM.A280.01	70	FEMALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.DM.A282.01	60	FEMALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.DM.A285.01	71	FEMALE	M1	N2	T3	IV	expression	mirna	methylation	multiomics
+TCGA.DM.A288.01	68	MALE	M0	N2	T3	IIIC	expression	mirna	methylation	multiomics
+TCGA.DM.A28A.01	78	MALE	M0	N2	T3	IIIC	expression	mirna	methylation	multiomics
+TCGA.DM.A28C.01	74	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.DM.A28E.01	72	FEMALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.DM.A28F.01	73	MALE	M0	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.DM.A28G.01	75	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.DM.A28H.01	50	MALE	M0	N2	T3	IIIC	expression	mirna	methylation	multiomics
+TCGA.DM.A28K.01	75	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.DM.A28M.01	63	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.F4.6459.01	61	FEMALE	M0	N2	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.F4.6460.01	51	FEMALE	M0	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.F4.6461.01	41	FEMALE	M0	N2	T4	IIIC	expression	mirna	methylation	multiomics
+TCGA.F4.6463.01	51	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.F4.6569.01	60	MALE	M0	N0	T2	I	expression	mirna	methylation	multiomics
+TCGA.F4.6570.01	78	FEMALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.F4.6703.01	64	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.F4.6704.01	60	MALE	MX	N2	T3	IIIC	expression	mirna	methylation	multiomics
+TCGA.F4.6805.01	58	FEMALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.F4.6806.01	59	FEMALE	M0	N0	T2	I	expression	mirna	methylation	multiomics
+TCGA.F4.6807.01	51	FEMALE	M0	N2	T3	IIIC	expression	mirna	methylation	multiomics
+TCGA.F4.6808.01	54	FEMALE	M0	N0	T1	I	expression	mirna	methylation	multiomics
+TCGA.F4.6809.01	52	FEMALE	M1	N1	T3	IVA	expression	mirna	methylation	multiomics
+TCGA.F4.6854.01	77	FEMALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.F4.6855.01	70	FEMALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.F4.6856.01	45	MALE	M0	N0	T2	I	expression	mirna	methylation	multiomics
+TCGA.G4.6293.01	49	FEMALE	M0	N1	T3	III	expression	mirna	methylation	multiomics
+TCGA.G4.6294.01	75	MALE	M1	N1	T3	IV	expression	mirna	methylation	multiomics
+TCGA.G4.6295.01	70	FEMALE	M0	N0	T3	II	expression	mirna	methylation	multiomics
+TCGA.G4.6297.01	55	FEMALE	M1	N2	T3	IV	expression	mirna	methylation	multiomics
+TCGA.G4.6298.01	90	MALE	MX	N1	T4	IIIB	expression	mirna	methylation	multiomics
+TCGA.G4.6299.01	69	MALE	M0	N2	T3	IIIC	expression	mirna	methylation	multiomics
+TCGA.G4.6302.01	90	FEMALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.G4.6303.01	54	FEMALE	M1	N1	T3	IV	expression	mirna	methylation	multiomics
+TCGA.G4.6304.01	66	FEMALE	M0	N0	T4	IIB	expression	mirna	methylation	multiomics
+TCGA.G4.6306.01	71	MALE	M0	N0	T2	NA	expression	mirna	methylation	multiomics
+TCGA.G4.6307.01	37	FEMALE	M0	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.G4.6309.01	40	FEMALE	M0	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.G4.6310.01	69	MALE	M0	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.G4.6311.01	80	MALE	MX	N1	T3	III	expression	mirna	methylation	multiomics
+TCGA.G4.6314.01	76	FEMALE	M1	N2	T3	IV	expression	mirna	methylation	multiomics
+TCGA.G4.6315.01	66	MALE	M1	N1	T3	IV	expression	mirna	methylation	multiomics
+TCGA.G4.6317.01	51	FEMALE	MX	N2	T3	IIIC	expression	mirna	methylation	multiomics
+TCGA.G4.6320.01	73	MALE	MX	N1	T3	III	expression	mirna	methylation	multiomics
+TCGA.G4.6321.01	60	FEMALE	MX	N1	T2	III	expression	mirna	methylation	multiomics
+TCGA.G4.6322.01	65	MALE	MX	N1	T3	IIIB	expression	mirna	methylation	multiomics
+TCGA.G4.6323.01	50	MALE	MX	N0	Tis	IA	expression	mirna	methylation	multiomics
+TCGA.G4.6586.01	73	FEMALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.G4.6588.01	58	FEMALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.G4.6625.01	77	FEMALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.G4.6626.01	90	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.G4.6627.01	84	MALE	M0	N0	T3	IIA	expression	mirna	methylation	multiomics
+TCGA.G4.6628.01	78	MALE	M0	N0	T2	I	expression	mirna	methylation	multiomics
+TCGA.NH.A50T.01	68	FEMALE	MX	N0	T3	IIA	expression		methylation	
+TCGA.NH.A50U.01	42	MALE	M1	N0	T4	IVA	expression		methylation	
+TCGA.NH.A50V.01	69	MALE	M0	N2	T3	IIIB	expression		methylation	
+TCGA.NH.A5IV.01	90	FEMALE	MX	N0	T3	IIA	expression		methylation	
+TCGA.NH.A6GA.01	58	MALE	MX	N2	T4	IIIC	expression		methylation	
+TCGA.NH.A6GB.01	71	FEMALE	MX	N2	T3	IIIC	expression		methylation	
+TCGA.NH.A6GC.01	66	FEMALE	M1	N1	T4	IVB	expression		methylation	
+TCGA.NH.A8F7.01	53	FEMALE	MX	N0	T3	IIA	expression		methylation	
+TCGA.NH.A8F8.01	79	MALE	M1	N2	T4	IV	expression		methylation	
+TCGA.QG.A5YV.01	64	FEMALE	MX	N1	T4	IIIC	expression		methylation	
+TCGA.QG.A5YW.01	55	FEMALE	MX	N2	T3	IIIC	expression		methylation	
+TCGA.QG.A5YX.01	61	FEMALE	MX	N0	T3	IIA	expression		methylation	
+TCGA.QG.A5Z1.01	71	MALE	MX	N1	T3	IIIB	expression		methylation	
+TCGA.QG.A5Z2.01	61	MALE	M0	N0	T2	I	expression		methylation	
+TCGA.QL.A97D.01	84	FEMALE	MX	N0	T2	I	expression		methylation	
+TCGA.RU.A8FL.01	51	MALE	MX	N2	T3	IIIB	expression		methylation	
+TCGA.SS.A7HO.01	44	FEMALE	M0	N0	T4	IIB	expression		methylation	
+TCGA.T9.A92H.01	82	MALE	M0	N0	T3	IIA	expression		methylation	
+TCGA.WS.AB45.01	52	FEMALE	MX	N0	T3	IIA	expression		methylation	

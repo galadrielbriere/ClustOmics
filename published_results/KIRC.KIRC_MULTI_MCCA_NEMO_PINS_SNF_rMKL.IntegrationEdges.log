@@ -1,0 +1,9 @@
+
+Integrating clusterings from : KIRC
+
+On datatypes : ['multiomics']
+
+For methods : ['MCCA', 'PINS', 'NEMO', 'SNF', 'rMKL']
+
+Relationship type : KIRC_MULTI_MCCA_NEMO_PINS_SNF_rMKL
+Building the integration graph. Integration Edges will be named "KIRC_MULTI_MCCA_NEMO_PINS_SNF_rMKL".

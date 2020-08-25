@@ -1,0 +1,54 @@
+Loading results from SKCM in ./data 
+
+Initiating graph from SKCM_metadata.txt metadata.
+Loading ./data/SKCM/SKCM_mirna_rMKL.clst clustering results.
+- computed on datatype : mirna
+- computed with method : rMKL
+Loading ./data/SKCM/SKCM_mirna_NEMO.clst clustering results.
+- computed on datatype : mirna
+- computed with method : NEMO
+Loading ./data/SKCM/SKCM_multiomics_rMKL.clst clustering results.
+- computed on datatype : multiomics
+- computed with method : rMKL
+Loading ./data/SKCM/SKCM_mirna_SNF.clst clustering results.
+- computed on datatype : mirna
+- computed with method : SNF
+Loading ./data/SKCM/SKCM_expression_PINS.clst clustering results.
+- computed on datatype : expression
+- computed with method : PINS
+Loading ./data/SKCM/SKCM_expression_rMKL.clst clustering results.
+- computed on datatype : expression
+- computed with method : rMKL
+Loading ./data/SKCM/SKCM_multiomics_SNF.clst clustering results.
+- computed on datatype : multiomics
+- computed with method : SNF
+Loading ./data/SKCM/SKCM_methylation_PINS.clst clustering results.
+- computed on datatype : methylation
+- computed with method : PINS
+Loading ./data/SKCM/SKCM_methylation_rMKL.clst clustering results.
+- computed on datatype : methylation
+- computed with method : rMKL
+Loading ./data/SKCM/SKCM_multiomics_NEMO.clst clustering results.
+- computed on datatype : multiomics
+- computed with method : NEMO
+Loading ./data/SKCM/SKCM_mirna_PINS.clst clustering results.
+- computed on datatype : mirna
+- computed with method : PINS
+Loading ./data/SKCM/SKCM_expression_NEMO.clst clustering results.
+- computed on datatype : expression
+- computed with method : NEMO
+Loading ./data/SKCM/SKCM_multiomics_PINS.clst clustering results.
+- computed on datatype : multiomics
+- computed with method : PINS
+Loading ./data/SKCM/SKCM_expression_SNF.clst clustering results.
+- computed on datatype : expression
+- computed with method : SNF
+Loading ./data/SKCM/SKCM_methylation_SNF.clst clustering results.
+- computed on datatype : methylation
+- computed with method : SNF
+Loading ./data/SKCM/SKCM_methylation_NEMO.clst clustering results.
+- computed on datatype : methylation
+- computed with method : NEMO
+Loading ./data/SKCM/SKCM_multiomics_MCCA.clst clustering results.
+- computed on datatype : multiomics
+- computed with method : MCCA

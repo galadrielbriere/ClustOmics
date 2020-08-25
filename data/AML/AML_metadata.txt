@@ -1,0 +1,199 @@
+main_node	property	node	label	label	label	label	label
+Patient	age_at_initial_pathologic_diagnosis	gender	Tissue	expression	mirna	methylation	multiomics
+TCGA.AB.2802.03	50	MALE	PrimaryBloodDerivedCancer 		mirna	methylation	
+TCGA.AB.2803.03	61	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2804.03	30	MALE	PrimaryBloodDerivedCancer 			methylation	
+TCGA.AB.2805.03	77	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2806.03	46	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2807.03	68	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2808.03	23	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2809.03	64	FEMALE	PrimaryBloodDerivedCancer 			methylation	
+TCGA.AB.2810.03	76	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2811.03	81	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2812.03	25	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2813.03	78	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2814.03	39	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2815.03	49	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2816.03	57	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2817.03	64	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2818.03	62	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2819.03	52	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2820.03	76	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2821.03	64	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2822.03	65	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2823.03	61	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2824.03	45	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2825.03	31	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2826.03	64	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2827.03	33	MALE	PrimaryBloodDerivedCancer 			methylation	
+TCGA.AB.2828.03	55	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2829.03	50	MALE	PrimaryBloodDerivedCancer 			methylation	
+TCGA.AB.2830.03	64	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2831.03	59	MALE	PrimaryBloodDerivedCancer 			methylation	
+TCGA.AB.2832.03	60	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2833.03	77	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2834.03	33	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2835.03	48	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2836.03	35	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2837.03	66	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2838.03	67	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2839.03	51	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2840.03	74	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2841.03	51	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2842.03	65	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2843.03	77	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2844.03	63	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2845.03	37	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2846.03	57	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2847.03	53	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2848.03	62	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2849.03	39	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2851.03	66	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2853.03	51	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2854.03	51	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2855.03	18	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2856.03	63	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2857.03	54	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2858.03	75	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2859.03	40	MALE	PrimaryBloodDerivedCancer 	expression	mirna		
+TCGA.AB.2860.03	60	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2861.03	76	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2862.03	33	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2863.03	63	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2865.03	75	MALE	PrimaryBloodDerivedCancer 	expression	mirna		
+TCGA.AB.2866.03	67	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2867.03	66	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2868.03	77	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2869.03	64	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2870.03	76	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2871.03	51	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2872.03	42	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2873.03	51	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2874.03	59	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2875.03	43	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2876.03	45	FEMALE	PrimaryBloodDerivedCancer 		mirna	methylation	
+TCGA.AB.2877.03	60	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2878.03	47	FEMALE	PrimaryBloodDerivedCancer 		mirna	methylation	
+TCGA.AB.2879.03	68	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2880.03	24	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2881.03	48	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2882.03	73	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2883.03	60	MALE	PrimaryBloodDerivedCancer 		mirna	methylation	
+TCGA.AB.2884.03	44	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2885.03	71	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2886.03	26	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2887.03	60	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2888.03	57	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2889.03	55	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2890.03	69	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2891.03	42	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2892.03	42	FEMALE	PrimaryBloodDerivedCancer 		mirna	methylation	
+TCGA.AB.2893.03	45	MALE	PrimaryBloodDerivedCancer 		mirna	methylation	
+TCGA.AB.2894.03	50	FEMALE	PrimaryBloodDerivedCancer 		mirna	methylation	
+TCGA.AB.2895.03	41	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2896.03	21	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2897.03	50	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2898.03	69	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2899.03	76	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2900.03	70	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2901.03	27	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2903.03	76	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2904.03	65	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2906.03	59	MALE	PrimaryBloodDerivedCancer 			methylation	
+TCGA.AB.2907.03	69	MALE	PrimaryBloodDerivedCancer 			methylation	
+TCGA.AB.2908.03	81	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2909.03	22	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2910.03	61	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2911.03	51	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2912.03	63	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2913.03	61	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2914.03	22	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2915.03	73	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2916.03	48	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2917.03	41	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2918.03	47	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2919.03	54	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2920.03	44	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2921.03	56	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2922.03	83	MALE	PrimaryBloodDerivedCancer 		mirna	methylation	
+TCGA.AB.2923.03	78	MALE	PrimaryBloodDerivedCancer 		mirna	methylation	
+TCGA.AB.2924.03	59	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2925.03	57	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2926.03	57	FEMALE	PrimaryBloodDerivedCancer 		mirna	methylation	
+TCGA.AB.2927.03	88	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2928.03	43	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2929.03	71	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2930.03	63	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2931.03	75	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2932.03	62	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2933.03	58	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2934.03	65	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2935.03	66	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2936.03	61	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2937.03	36	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2938.03	76	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2939.03	72	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2940.03	35	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2941.03	73	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2942.03	67	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2943.03	70	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2944.03	48	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2945.03	65	FEMALE	PrimaryBloodDerivedCancer 		mirna	methylation	
+TCGA.AB.2946.03	41	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2947.03	52	MALE	PrimaryBloodDerivedCancer 		mirna	methylation	
+TCGA.AB.2948.03	67	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2949.03	58	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2950.03	34	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2952.03	60	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2954.03	55	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2955.03	56	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2956.03	61	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2957.03	31	MALE	PrimaryBloodDerivedCancer 		mirna	methylation	
+TCGA.AB.2959.03	71	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2963.03	56	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2964.03	58	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2965.03	60	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2966.03	57	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2967.03	58	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2968.03	79	MALE	PrimaryBloodDerivedCancer 			methylation	
+TCGA.AB.2969.03	55	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2970.03	34	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2971.03	76	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2972.03	82	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2973.03	68	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2974.03	67	FEMALE	PrimaryBloodDerivedCancer 			methylation	
+TCGA.AB.2975.03	54	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2976.03	53	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2977.03	71	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2978.03	61	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2979.03	30	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2980.03	50	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2981.03	35	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2982.03	29	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2983.03	45	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2984.03	38	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2985.03	81	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2986.03	31	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2987.03	75	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2988.03	67	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2989.03	29	MALE	PrimaryBloodDerivedCancer 		mirna	methylation	
+TCGA.AB.2990.03	51	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2991.03	40	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2992.03	32	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2993.03	57	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2994.03	25	MALE	PrimaryBloodDerivedCancer 	expression	mirna		
+TCGA.AB.2995.03	63	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2996.03	74	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2997.03	25	FEMALE	PrimaryBloodDerivedCancer 		mirna	methylation	
+TCGA.AB.2998.03	68	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.2999.03	62	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.3000.03	25	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.3001.03	31	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.3002.03	68	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.3005.03	45	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.3006.03	61	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.3007.03	35	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.3008.03	22	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.3009.03	23	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.3011.03	21	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics
+TCGA.AB.3012.03	53	MALE	PrimaryBloodDerivedCancer 	expression	mirna	methylation	multiomics

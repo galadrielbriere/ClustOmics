@@ -1,0 +1,9 @@
+
+Integrating clusterings from : LIHC
+
+On datatypes : ['multiomics']
+
+For methods : ['MCCA', 'PINS', 'NEMO', 'SNF', 'rMKL']
+
+Relationship type : LIHC_MULTI_MCCA_NEMO_PINS_SNF_rMKL
+Building the integration graph. Integration Edges will be named "LIHC_MULTI_MCCA_NEMO_PINS_SNF_rMKL".

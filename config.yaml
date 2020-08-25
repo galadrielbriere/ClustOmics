@@ -1,0 +1,145 @@
+# Connection to Neo4j database
+neo4j_id: 'neo4j'
+neo4j_password: '4jneo'
+database: "bolt://localhost:7687"
+
+# Folder containing raw clustering results
+clusterings_folder: "./data"
+
+# Specify the label to identify object nodes in the graph
+object_nodes_name: 'Patient'
+# Specify the label to identify cluster nodes in the graph
+cluster_nodes_name: 'Cluster'
+
+# For each Integration Edge, specify the datatypes to merge
+  # RELATION_NAME: 'datatype1|datatype2|...|datatypeN'
+datatypes:
+  AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'expression|methylation|mirna'
+  AML_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'multiomics'
+
+  COAD_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'expression|methylation|mirna'
+  COAD_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'multiomics'
+
+  BIC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'expression|methylation|mirna'
+  BIC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'multiomics'
+
+  GBM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'expression|methylation|mirna'
+  GBM_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'multiomics'
+
+  KIRC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'expression|methylation|mirna'
+  KIRC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'multiomics'
+
+  OV_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'expression|methylation|mirna'
+  OV_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'multiomics'
+
+  SARC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'expression|methylation|mirna'
+  SARC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'multiomics'
+
+  LUSC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'expression|methylation|mirna'
+  LUSC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'multiomics'
+
+  LIHC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'expression|methylation|mirna'
+  LIHC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'multiomics'
+
+  SKCM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'expression|methylation|mirna'
+  SKCM_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'multiomics'
+
+# For each Integration Edge, specify the methods to merge
+# RELATION_NAME: 'method1|method2|...|methodN'
+methods:
+  AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'PINS|NEMO|SNF|rMKL'
+  AML_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'MCCA|PINS|NEMO|SNF|rMKL'
+
+  COAD_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'PINS|NEMO|SNF|rMKL'
+  COAD_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'MCCA|PINS|NEMO|SNF|rMKL'
+
+  BIC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'PINS|NEMO|SNF|rMKL'
+  BIC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'MCCA|PINS|NEMO|SNF|rMKL'
+
+  GBM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'PINS|NEMO|SNF|rMKL'
+  GBM_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'MCCA|PINS|NEMO|SNF|rMKL'
+
+  KIRC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'PINS|NEMO|SNF|rMKL'
+  KIRC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'MCCA|PINS|NEMO|SNF|rMKL'
+
+  OV_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'PINS|NEMO|SNF|rMKL'
+  OV_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'MCCA|PINS|NEMO|SNF|rMKL'
+
+  SARC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'PINS|NEMO|SNF|rMKL'
+  SARC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'MCCA|PINS|NEMO|SNF|rMKL'
+
+  LUSC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'PINS|NEMO|SNF|rMKL'
+  LUSC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'MCCA|PINS|NEMO|SNF|rMKL'
+
+  LIHC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'PINS|NEMO|SNF|rMKL'
+  LIHC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'MCCA|PINS|NEMO|SNF|rMKL'
+
+  SKCM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'PINS|NEMO|SNF|rMKL'
+  SKCM_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'MCCA|PINS|NEMO|SNF|rMKL'
+
+# For each Integration Edge, specify the minimum allowed size for clusters
+# Clusters containing less than x nodes will be removed from the analysis
+# Must be a positive integer
+min_size_clust:
+  AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 8
+  AML_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 8
+
+  BIC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 31
+  BIC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 8
+
+  COAD_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 11
+  COAD_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 8
+
+  GBM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 13
+  GBM_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 8
+
+  KIRC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 9
+  KIRC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 8
+
+  LIHC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 18
+  LIHC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 8
+
+  LUSC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 17
+  LUSC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 8
+
+  OV_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 14
+  OV_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 8
+
+  SARC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 12
+  SARC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 8
+
+  SKCM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 17
+  SKCM_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 8
+
+# For each Integration Edge, specify the minimum number of objects to be returned
+# This parameters is only used when the number of supports to use to filter the graph is not specified
+min_size_consensus:
+  AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 161
+  AML_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 161
+
+  BIC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 589
+  BIC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 589
+
+  COAD_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 209
+  COAD_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 209
+
+  GBM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 260
+  GBM_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 260
+
+  KIRC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 173
+  KIRC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 173
+
+  LIHC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 348
+  LIHC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 348
+
+  LUSC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 323
+  LUSC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 323
+
+  OV_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 272
+  OV_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 272
+
+  SARC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 244
+  SARC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 244
+
+  SKCM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 333
+  SKCM_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 333

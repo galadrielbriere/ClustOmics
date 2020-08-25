@@ -1,0 +1,12 @@
+Integrating clusterings from : SKCM
+On datatypes : ['multiomics']
+For methods : ['MCCA', 'PINS', 'NEMO', 'SNF', 'rMKL']
+Relationship type : SKCM_MULTI_MCCA_NEMO_PINS_SNF_rMKL
+Optimal number of supports is 3
+The graph will be clustered with Markov clustering using only IntegrationEdges with nb_supports >= 3
+350 nodes classified in 5 clusters after remooving too small clusters (min_accepted_nb_nodes_in_clusters set to 8 in the configuration file)
+Weighted Modularization Quality for the clustering is 0.6623932282102031
+Storing results into the graph
+Check the graph with the following Cypher query : 
+ MATCH (o:Patient:SKCM)-[r:FROM_MARKOVCLUST]-(c:OptimalNbSupports:SKCM:MarkovCluster:SKCM_MULTI_MCCA_NEMO_PINS_SNF_rMKL) RETURN o, r, c
+Clustering results stored in file : out/results/SKCM/SKCM.SKCM_MULTI_MCCA_NEMO_PINS_SNF_rMKL.ClustOmicsClustering

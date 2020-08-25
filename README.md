@@ -1,4 +1,4 @@
-# INSTALLATION
+# Installation
 
 1) Install Neo4j, create an empty database and install "APOC" and "Graph Data Science" Neo4j libraries. Start the database.
 
@@ -24,11 +24,10 @@ To run analysis on generated consensus clusterings (Survival analysis, Clinical 
 	python -m pip install markov_clustering
 ```
 
-# RUN CLUSTOMICS
-
+# Run ClustOmics
 ClustOmics uses **Snakemake** for a quick and easy execution. See https://snakemake.readthedocs.io/en/stable/ to get started with Snakemake.
 
-## 1) THE DATA FOLDER
+## 1) Data folder organisation
 The _./data_ folder contains directories for each study case. For instance, a specific folder is created for each cancer type analysed. Input clusterings and metadata file are sored in <i>./data/<subject></i>. For instance, all input data for AML cancer type are stored in <i>./data/AML</i>. 
 
 Each <i>data/<subject></i> folder must contain an **object metadata file** and **input clusterings files**. 
@@ -81,10 +80,10 @@ TCGA.AB.2803.03	3
 TCGA.AB.2805.03	7
 ```
 
-## 2) SNAKEMAKE CONFIGURATION FILE
+## 2) Snakemake Configuration file
 Fill the configuration file <i>config.yaml</i> according to the specifications indicated in it. The integration scenarios are defined in this configuration file.
 
-## 3) RUN CLUSTOMICS
+## 3) Run ClustOmics
 ```
 	snakemake out/{subject}.{rel_name}.FuseClusterings.log --cores 1
 ```

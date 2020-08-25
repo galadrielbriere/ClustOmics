@@ -82,7 +82,7 @@ TCGA.AB.2805.03	7
 ```
 
 ## 2) SNAKEMAKE CONFIGURATION FILE
-Fill the configuration file <i>config.yaml</i> according to the specifications indicated in it.
+Fill the configuration file <i>config.yaml</i> according to the specifications indicated in it. The integration scenarios are defined in this configuration file.
 
 ## 3) RUN CLUSTOMICS
 ```
@@ -94,6 +94,11 @@ Or:
 	snakemake out/{subject}.SupportEdges.log --cores 1
 	snakemake out/{subject}.{rel_name}.IntegrationEdges.log --cores 1
 	snakemake out/{subject}.{rel_name}.FuseClusterings.log --cores 1
+```
+
+For instance, to compute consensus clustering for AML SingleToMulti:
+```
+	snakemake out/AML.AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL.FuseClusterings.log --cores 1
 ```
 
 To run ClustOmics with a user-defined number of supports (/!\ parameter min_size_consensus will be ignored):
@@ -135,6 +140,5 @@ For latest command to work, you need to download raw datasets here: http://acgt.
 ```
 
 We don't recommend using multiple cores (defined by the --cores parameter).
-
 
 

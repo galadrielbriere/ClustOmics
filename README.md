@@ -70,7 +70,7 @@ TCGA.AB.2803.03	61	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylatio
 From this metadata file, ClustOmics will create _Patient_ nodes for each provided TCGA id. Each Patient node will display a property "age_at_initial_pathologic_diagnosis" to indicate the age of the patient at diagnosis. Each Patient node will share a "gender" relationship with a "gender" node "MALE" or "FEMALE" node to indicate the gender of the patient. Each Patient node will carry additional labels to indicate the tissue and the omic(s) they were measured for. For instance, Patient "TCGA.AB.2802.03" have been measured for miRNA and methylation but not for expression.
 
 ### 1.2) Input clustering files
-Input clusterings must be named as follow: <i><subject>_<datatype>_<method>.clst</i>. For instance, input clustering computed with NEMO from the expression dataset is named <i>AML_expression_NEMO.clst</i>. 
+Input clusterings must be named as follow: <i>subject_datatype_method.clst</i>. For instance, input clustering computed with NEMO from the AML expression dataset is named <i>AML_expression_NEMO.clst</i>. 
 Clustering files are tab delimited and must contain a header to indicate the main node name (as set the metadata file) and the name to give to cluster nodes.
 
 For instance:

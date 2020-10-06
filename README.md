@@ -1,6 +1,6 @@
 # Installation
 
-1) Install Neo4j, create an empty database and install "APOC" and "Graph Data Science" Neo4j libraries. Start the database.
+1) Install Neo4j, create an empty database and install "APOC" and "Graph Data Science" Neo4j libraries. Start the database (version tested: 4.0.6).
 
 2) Create conda environment for ClustOmics:
 
@@ -34,7 +34,7 @@ Each <i>data/<subject></i> folder must contain an **object metadata file** and *
 
 ### 1.1) The metadata file
 The metadata file stores informations on the objects considered (for instance, Patients for cancer subtyping). This file is used to instanciate the graph. **All objects appearing in at least one input clustering must be described in this file.** 
-The metadata file must be named as: <i><subject>_metadata.txt</i>. For instance, for AML cancer study case, patients are described in <i>./data/AML/AML_metadata.txt</i>.
+The metadata file must be named as: <i>subject_metadata.txt</i>. For instance, for AML cancer study case, patients are described in <i>./data/AML/AML_metadata.txt</i>.
 The metadata file is tab delimited. 
 In its minimal form, the metadata file must be organised as followed:
 

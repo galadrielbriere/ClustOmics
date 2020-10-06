@@ -2,7 +2,10 @@ library(ggplot2)
 library(ggrepel)
 library(reshape2)
 
+setwd("ClustOmics/out")
+
 pval = 0.01
+#tot_nb_clinical_labels = 79
 clin_labels_per_cancer = c('AML'=4, 'BIC'=11, 'COAD'=10, 'GBM'=5, 'KIRC'=9, 'LIHC'=14, 'LUSC'=10, 'SARC'=4, 'SKCM'=9, 'OV'=3)
 cancers <- c("AML", "BIC", "COAD", "GBM", "KIRC", "LIHC", "LUSC", "SARC", "SKCM", "OV")
 rel = c('_MULTI_MCCA_NEMO_PINS_SNF_rMKL', "_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL")
@@ -31,6 +34,7 @@ nemo_met = list(surv = c(), clin = c())
 
 get_surv = function(surv_file) {
   surv = as.numeric(read.table(surv_file, header=F))
+  #surv = ifelse(surv <= pval, 1, 0)
   surv = -log10(surv)
   return(surv)
 }
@@ -216,13 +220,16 @@ df_surv_multi$SNF = unlist(snf["surv"])
 df_surv_multi$rMKL = unlist(mkl["surv"])
 df_surv_multi$MCCA = unlist(mcca["surv"])
 df_surv_multi$NEMO = unlist(nemo["surv"])
+df_surv_multi_melt = melt(df_surv_multi)
 df_surv_multi$ClustOmicsMtoM = unlist(multi["surv"])
-df_surv_multi = df_surv_multi[,c(1, 7, 2:6)]
-df_surv_multi = melt(df_surv_multi)
 
-p <- ggplot(df_surv_multi, aes(x=cancers, y=value, fill=variable)) + geom_boxplot(fill="white") + 
-  geom_dotplot(binaxis='y', stackdir='center', dotsize = 0.5, position=position_dodge(width=0.2)) + labs(x ="Cancer", y = "-log10(survival p-value)", fill = "Method") + 
-  geom_hline(yintercept=-log10(pval), linetype="dashed") + scale_fill_manual(values=c(PINS = "#F8766D", SNF="#00BA38", rMKL="#619CFF", MCCA="#B79F00", NEMO="#00BFC4", ClustOmicsMtoM="#C77CFF"))
+# First plot boxplots for input clusterings, then adds survival results from ClustOmics
+p <- ggplot(df_surv_multi_melt, aes(x=cancers, y=value, fill=variable)) + geom_boxplot(fill="white") + 
+  geom_dotplot(binaxis='y', stackdir='center', dotsize = 0.5, position=position_dodge(width=0.2)) + 
+  geom_point(data = melt(df_surv_multi[,c("cancers", "ClustOmicsMtoM")]), color = "#C77CFF", size = 3, show.legend = F) +
+  scale_fill_manual(values=c(PINS = "#F8766D", SNF="#00BA38", rMKL="#619CFF", MCCA="#B79F00", NEMO="#00BFC4", ClustOmicsMtoM="#C77CFF")) +
+  labs(x ="Cancer", y = "-log10(survival p-value)", fill = "Method") + 
+  geom_hline(yintercept=-log10(pval), linetype="dashed") + theme_bw()
 
 svg(file = paste("plots/Multi_Surv_Overall_Qual_Clust_", pval, ".svg", sep=""), width=10, height=7)
 print(p)
@@ -235,16 +242,16 @@ df_clin_multi$SNF = unlist(snf["clin"])
 df_clin_multi$rMKL = unlist(mkl["clin"])
 df_clin_multi$MCCA = unlist(mcca["clin"])
 df_clin_multi$NEMO = unlist(nemo["clin"])
+df_clin_multi_melt = melt(df_clin_multi)
 df_clin_multi$ClustOmicsMtoM = unlist(multi["clin"])
 
-df_clin_multi = melt(df_clin_multi)
-
-p <- ggplot(df_clin_multi, aes(x=cancers, y=value, fill=variable)) + geom_boxplot(fill="white") + 
+p <- ggplot(df_clin_multi_melt, aes(x=cancers, y=value, fill=variable)) + geom_boxplot(fill="white") + 
+  geom_point(data = melt(df_clin_multi[,c("cancers", "ClustOmicsMtoM")]), position = position_dodge(width=0.2), color = "#C77CFF", size = 3, show.legend = F) +
   geom_dotplot(binaxis='y', stackdir='center', dotsize = 0.5, position=position_dodge(width=0.2)) + 
   labs(x ="Cancer", y = "# enriched clinical labels", fill = "Method") +
-  scale_y_continuous(breaks=c(0,2,4,6,8))
-  #+ scale_fill_brewer(palette = "Paired")
-
+  scale_y_continuous(breaks=c(0,2,4,6,8)) + + theme_bw() +
+  scale_fill_manual(values=c(PINS = "#F8766D", SNF="#00BA38", rMKL="#619CFF", MCCA="#B79F00", NEMO="#00BFC4", ClustOmicsMtoM="#C77CFF")) 
+  
 svg(file = paste("plots/Multi_Clin_Overall_Qual_Clust_", pval, ".svg", sep=""), width=10, height=7)
 print(p)
 dev.off()
@@ -273,20 +280,25 @@ df_surv_single$PINS_met = unlist(pins_met["surv"])
 df_surv_single$SNF_met = unlist(snf_met["surv"])
 df_surv_single$rMKL_met = unlist(mkl_met["surv"])
 df_surv_single$NEMO_met = unlist(nemo_met["surv"])
+df_surv_single_melt = melt(df_surv_single)
 df_surv_single$ClustOmicsStoM = unlist(single["surv"])
 
-df_surv_single = melt(df_surv_single)
-df_surv_single$method = gsub("_.*", "", df_surv_single$variable)
-df_surv_single$omic = gsub(".*_", "", df_surv_single$variable)
-df_surv_single$omic = gsub("exp", "Expression", df_surv_single$omic)
-df_surv_single$omic = gsub("met", "Methylation", df_surv_single$omic)
-df_surv_single$omic = gsub("mirna", "miRNA", df_surv_single$omic)
+df_surv_single_melt$method = gsub("_.*", "", df_surv_single_melt$variable)
+df_surv_single_melt$omic = gsub(".*_", "", df_surv_single_melt$variable)
+df_surv_single_melt$omic = gsub("exp", "Expression", df_surv_single_melt$omic)
+df_surv_single_melt$omic = gsub("met", "Methylation", df_surv_single_melt$omic)
+df_surv_single_melt$omic = gsub("mirna", "miRNA", df_surv_single_melt$omic)
 
-p <- ggplot(df_surv_single, aes(x=cancers, y=value, fill=omic)) + geom_boxplot(fill="white") + 
-  geom_dotplot(binaxis='y', stackdir='center', dotsize = 0.5, position=position_dodge(width=0.2)) + labs(x ="Cancer", y = "-log10(survival)", fill = "Omic") + 
-  geom_hline(yintercept=-log10(pval), linetype="dashed") + scale_fill_manual(values=c(Expression = "#F8766D", Methylation="#00BA38", miRNA="#619CFF", ClustOmicsStoM="#C77CFF"))
-#+ scale_fill_brewer(palette = "Paired")
-#c(Expression = "#F8766D", Methylation="#00BA38", miRNA="#619CFF", Multiomics="#C77CFF")
+df_clusto_surv = melt(df_surv_single[,c("cancers", "ClustOmicsStoM")])
+df_clusto_surv$omic = "ClustOmicsStoM"
+df_clusto_surv$method = "ClustOmics"
+
+p <- ggplot(df_surv_single_melt, aes(x=cancers, y=value, fill=omic)) + geom_boxplot(fill="white") + 
+  geom_dotplot(binaxis='y', stackdir='center', dotsize = 0.5, position=position_dodge(width=0.2)) + 
+  scale_fill_manual(values=c(Expression = "#F8766D", Methylation="#00BA38", miRNA="#619CFF", ClustOmicsStoM="#C77CFF")) +
+  geom_point(data = df_clusto_surv, position = position_dodge(width=0.2), color = "#C77CFF", size = 3, show.legend = F) +
+  labs(x ="Cancer", y = "-log10(survival)", fill = "Omic") + 
+  geom_hline(yintercept=-log10(pval), linetype="dashed") + theme_bw()
 
 svg(file = paste("plots/Single_Surv_Overall_Qual_Clust_", pval, ".svg", sep=""), width=10, height=7)
 print(p)
@@ -306,19 +318,25 @@ df_clin_single$PINS_met = unlist(pins_met["clin"])
 df_clin_single$SNF_met = unlist(snf_met["clin"])
 df_clin_single$rMKL_met = unlist(mkl_met["clin"])
 df_clin_single$NEMO_met = unlist(nemo_met["clin"])
+df_clin_single_melt = melt(df_clin_single)
 df_clin_single$ClustOmicsStoM = unlist(single["clin"])
 
-df_clin_single = melt(df_clin_single)
-df_clin_single$method = gsub("_.*", "", df_clin_single$variable)
-df_clin_single$omic = gsub(".*_", "", df_clin_single$variable)
-df_clin_single$omic = gsub("exp", "Expression", df_clin_single$omic)
-df_clin_single$omic = gsub("met", "Methylation", df_clin_single$omic)
-df_clin_single$omic = gsub("mirna", "miRNA", df_clin_single$omic)
+df_clin_single_melt$method = gsub("_.*", "", df_clin_single_melt$variable)
+df_clin_single_melt$omic = gsub(".*_", "", df_clin_single_melt$variable)
+df_clin_single_melt$omic = gsub("exp", "Expression", df_clin_single_melt$omic)
+df_clin_single_melt$omic = gsub("met", "Methylation", df_clin_single_melt$omic)
+df_clin_single_melt$omic = gsub("mirna", "miRNA", df_clin_single_melt$omic)
 
-p <- ggplot(df_clin_single, aes(x=cancers, y=value, fill=omic)) + geom_boxplot(fill="white") + 
+
+df_clusto_clin = melt(df_clin_single[,c("cancers", "ClustOmicsStoM")])
+df_clusto_clin$omic = "ClustOmicsStoM"
+df_clusto_clin$method = "ClustOmics"
+
+p <- ggplot(df_clin_single_melt, aes(x=cancers, y=value, fill=omic)) + geom_boxplot(fill="white") + 
   geom_dotplot(binaxis='y', stackdir='center', dotsize = 0.3, position=position_dodge(width=0.6)) + 
+  geom_point(data = df_clusto_clin, position = position_dodge(width=0.2), color = "#C77CFF", size = 2, show.legend = F) +
   labs(x ="Cancer", y = "# enriched clinical labels", fill = "Omic") +
-  scale_y_continuous(breaks=c(0,2,4,6,8))
+  scale_y_continuous(breaks=c(0,2,4,6,8)) + theme_bw()
 
 svg(file = paste("plots/Single_Clin_Overall_Qual_Clust_", pval, ".svg", sep=""), width=10, height=7)
 print(p)

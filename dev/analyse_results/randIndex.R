@@ -5,7 +5,7 @@ library(pheatmap)
 library(ggplot2)
 library(viridis)
 
-setwd("~/NewClustOmics")
+setwd("~/ClustOmics")
 
 save_pheatmap_png <- function(x, filename, width=1200, height=1000, res = 150) {
   png(filename, width = width, height = height, res = res)

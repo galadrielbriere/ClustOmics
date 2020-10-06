@@ -1,6 +1,6 @@
 # Installation
 
-1) Install Neo4j, create an empty database and install "APOC" and "Graph Data Science" Neo4j libraries. Start the database (version tested: 4.0.6).
+1) Install Neo4j, create an empty database (version tested: 4.0.6) and install "APOC" and "Graph Data Science" Neo4j libraries. Start the database.
 
 2) Create conda environment for ClustOmics:
 

@@ -3,6 +3,9 @@ library(RColorBrewer)
 library(gplots)
 library(pheatmap)
 library(ggplot2)
+library(viridis)
+
+setwd("~/NewClustOmics")
 
 save_pheatmap_png <- function(x, filename, width=1200, height=1000, res = 150) {
   png(filename, width = width, height = height, res = res)
@@ -83,7 +86,7 @@ for (cancer in cancers) {
   my_group$Omic = gsub("methylation", "Methylation", my_group$Omic)
   my_group$Omic = gsub("multiomics", "Multiomics", my_group$Omic)
   my_colour = list(Omic = c(Expression = "#F8766D", Methylation="#00BA38", miRNA="#619CFF", Multiomics="#C77CFF"))
-  p = pheatmap(df, annotation_row = my_group, annotation_colors = my_colour)
+  p = pheatmap(df, annotation_row = my_group, annotation_colors = my_colour, color=magma(5))
 
   save_pheatmap_png(p, out_plot)
   
@@ -99,10 +102,10 @@ clusto$omic = gsub("mirna", "miRNA", clusto$omic)
 clusto$omic = gsub("methylation", "Methylation", clusto$omic)
 
 p <- ggplot(clusto, aes(x=cancer, y=rands, fill=omic)) + geom_boxplot(fill="white") + 
-  geom_dotplot(binaxis='y', stackdir='center', dotsize = 0.5, position=position_dodge(width=0.2)) + 
+  geom_dotplot(binaxis='y', stackdir='center', dotsize = 0.5, position=position_dodge(width=0.2)) + theme_bw() +
   labs(x ="Cancer", y = "Adjusted Rand Index", fill = "Omic") #+ scale_fill_brewer(palette = "Paired")
 
-pdf(file = "./out/plots/overall_randIndex_SingleToMulti.pdf")
+svg(file = "./out/plots/overall_randIndex_SingleToMulti.svg")
 p
 dev.off()
 
@@ -180,7 +183,7 @@ for (cancer in cancers) {
   my_group$Omic = gsub("methylation", "Methylation", my_group$Omic)
   my_group$Omic = gsub("multiomics", "Multiomics", my_group$Omic)
   my_colour = list(Omic = c(Expression = "#F8766D", Methylation="#00BA38", miRNA="#619CFF", Multiomics="#C77CFF"))
-  p = pheatmap(df)
+  p = pheatmap(df, color=magma(5))
   
   save_pheatmap_png(p, out_plot)
   
@@ -203,9 +206,9 @@ clusto$omic = gsub("methylation", "Methylation", clusto$omic)
 
 
 p <- ggplot(clusto, aes(x=cancer, y=rands, fill=method)) + geom_boxplot(fill="white") +
-  geom_dotplot(binaxis='y', stackdir='center', dotsize = 0.5) +
+  geom_dotplot(binaxis='y', stackdir='center', dotsize = 0.5) + theme_bw() +
   labs(x ="Cancer", y = "Adjusted Rand Index", fill = "Input Clustering")
 
-png(file = "./out/plots/overall_randIndex_MultiToMulti.png")
+svg(file = "./out/plots/overall_randIndex_MultiToMulti.svg")
 p
 dev.off()

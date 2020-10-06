@@ -1,6 +1,6 @@
-# INSTALLATION
+# Installation
 
-1) Install Neo4j, create an empty database and install "APOC" and "Graph Data Science" Neo4j libraries. Start the database.
+1) Install Neo4j, create an empty database (version tested: 4.0.6) and install "APOC" and "Graph Data Science" Neo4j libraries. Start the database.
 
 2) Create conda environment for ClustOmics:
 
@@ -24,18 +24,17 @@ To run analysis on generated consensus clusterings (Survival analysis, Clinical 
 	python -m pip install markov_clustering
 ```
 
-# RUN CLUSTOMICS
-
+# Run ClustOmics
 ClustOmics uses **Snakemake** for a quick and easy execution. See https://snakemake.readthedocs.io/en/stable/ to get started with Snakemake.
 
-## 1) THE DATA FOLDER
+## 1) Data folder organisation
 The _./data_ folder contains directories for each study case. For instance, a specific folder is created for each cancer type analysed. Input clusterings and metadata file are sored in <i>./data/<subject></i>. For instance, all input data for AML cancer type are stored in <i>./data/AML</i>. 
 
 Each <i>data/<subject></i> folder must contain an **object metadata file** and **input clusterings files**. 
 
 ### 1.1) The metadata file
 The metadata file stores informations on the objects considered (for instance, Patients for cancer subtyping). This file is used to instanciate the graph. **All objects appearing in at least one input clustering must be described in this file.** 
-The metadata file must be named as: <i><subject>_metadata.txt</i>. For instance, for AML cancer study case, patients are described in <i>./data/AML/AML_metadata.txt</i>.
+The metadata file must be named as: <i>subject_metadata.txt</i>. For instance, for AML cancer study case, patients are described in <i>./data/AML/AML_metadata.txt</i>.
 The metadata file is tab delimited. 
 In its minimal form, the metadata file must be organised as followed:
 
@@ -71,7 +70,7 @@ TCGA.AB.2803.03	61	FEMALE	PrimaryBloodDerivedCancer 	expression	mirna	methylatio
 From this metadata file, ClustOmics will create _Patient_ nodes for each provided TCGA id. Each Patient node will display a property "age_at_initial_pathologic_diagnosis" to indicate the age of the patient at diagnosis. Each Patient node will share a "gender" relationship with a "gender" node "MALE" or "FEMALE" node to indicate the gender of the patient. Each Patient node will carry additional labels to indicate the tissue and the omic(s) they were measured for. For instance, Patient "TCGA.AB.2802.03" have been measured for miRNA and methylation but not for expression.
 
 ### 1.2) Input clustering files
-Input clusterings must be named as follow: <i><subject>_<datatype>_<method>.clst</i>. For instance, input clustering computed with NEMO from the expression dataset is named <i>AML_expression_NEMO.clst</i>. 
+Input clusterings must be named as follow: <i>subject_datatype_method.clst</i>. For instance, input clustering computed with NEMO from the AML expression dataset is named <i>AML_expression_NEMO.clst</i>. 
 Clustering files are tab delimited and must contain a header to indicate the main node name (as set the metadata file) and the name to give to cluster nodes.
 
 For instance:
@@ -81,10 +80,10 @@ TCGA.AB.2803.03	3
 TCGA.AB.2805.03	7
 ```
 
-## 2) SNAKEMAKE CONFIGURATION FILE
+## 2) Snakemake Configuration file
 Fill the configuration file <i>config.yaml</i> according to the specifications indicated in it. The integration scenarios are defined in this configuration file.
 
-## 3) RUN CLUSTOMICS
+## 3) Run ClustOmics
 ```
 	snakemake out/{subject}.{rel_name}.FuseClusterings.log --cores 1
 ```

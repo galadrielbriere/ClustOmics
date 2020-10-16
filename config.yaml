@@ -1,7 +1,8 @@
 # Connection to Neo4j database
-neo4j_id: 'neo4j'
+neo4j_id: 'neo4j' # default
 neo4j_password: '4jneo'
 database: "bolt://localhost:7687"
+# To find the appropriate database address: from Neo4j standalone, start the database and via the "Manage" track, go to "Details", then check the IP adress and Bolt port
 
 # Folder containing raw clustering results
 clusterings_folder: "./data"

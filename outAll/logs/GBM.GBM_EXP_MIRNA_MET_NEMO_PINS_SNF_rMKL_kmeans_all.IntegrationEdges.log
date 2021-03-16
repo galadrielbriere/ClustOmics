@@ -1,0 +1,9 @@
+
+Integrating clusterings from : GBM
+
+On datatypes : ['expression', 'methylation', 'mirna']
+
+For methods : ['PINS', 'NEMO', 'SNF', 'rMKL', 'kmeans']
+
+Relationship type : GBM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all
+Building the integration graph. Integration Edges will be named "GBM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all".

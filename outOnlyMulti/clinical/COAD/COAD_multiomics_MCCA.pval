@@ -1,0 +1,10 @@
+gender	0
+age_at_initial_pathologic_diagnosis	0.578
+pathologic_M	0.512
+pathologic_N	0.353
+pathologic_T	0.649
+pathologic_stage	0.198
+histological_type	0.00786138613861386
+new_neoplasm_event_type	0.877
+colon_polyps_present	0.293
+history_of_colon_polyps	0.187

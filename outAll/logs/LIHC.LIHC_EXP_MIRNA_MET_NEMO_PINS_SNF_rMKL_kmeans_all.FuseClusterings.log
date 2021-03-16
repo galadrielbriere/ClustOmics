@@ -1,0 +1,27 @@
+Integrating clusterings from : LIHC
+On datatypes : ['expression', 'methylation', 'mirna']
+For methods : ['PINS', 'NEMO', 'SNF', 'rMKL', 'kmeans']
+Relationship type : LIHC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all
+Optimal number of supports is 8
+The graph will be clustered with Markov clustering using only IntegrationEdges with nb_supports >= 8
+363 nodes classified in 5 clusters after remooving too small clusters (min_accepted_nb_nodes_in_clusters set to 18 in the configuration file)
+Weighted Modularization Quality for the clustering is 0.3565854508572367
+14 unclassified nodes reassigned to consensus clusters
+[['TCGA.BC.4072.01' '2']
+ ['TCGA.BC.4073.01' '2']
+ ['TCGA.BD.A3EP.01' '2']
+ ['TCGA.BW.A5NQ.01' '3']
+ ['TCGA.CC.5262.01' '2']
+ ['TCGA.CC.A1HT.01' '2']
+ ['TCGA.CC.A7II.01' '2']
+ ['TCGA.DD.A1E9.01' '2']
+ ['TCGA.DD.A1EG.01' '3']
+ ['TCGA.DD.AADJ.01' '3']
+ ['TCGA.EP.A3JL.01' '3']
+ ['TCGA.FV.A495.01' '3']
+ ['TCGA.G3.A7M9.01' '2']
+ ['TCGA.XR.A8TD.01' '2']]
+Storing results into the graph
+Check the graph with the following Cypher query : 
+ MATCH (o:Patient:LIHC)-[r:FROM_MARKOVCLUST]-(c:OptimalNbSupports:LIHC:MarkovCluster:LIHC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all) RETURN o, r, c
+Clustering results stored in file : out/results/LIHC/LIHC.LIHC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all.ClustOmicsClustering

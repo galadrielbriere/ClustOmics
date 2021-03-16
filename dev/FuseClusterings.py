@@ -47,6 +47,10 @@ parser.add_argument("-min_nodes", "--min_nodes_analyse",
 parser.add_argument("-nb_sup", "--user_nb_supports",
                     help="If 0, NeOmics coputes the optimal number of supports to filter the graph \
                     else, the provided nuber of supports is used.")
+parser.add_argument("-wa", "--writeAll",
+                    help="If False, will only return objects that passes all filters")
+parser.add_argument("-re", "--reassign",
+                    help="If False, will only return objects that passes all filters")
 
 args = parser.parse_args()
 
@@ -65,6 +69,16 @@ methods = list(methods.split('|'))
 nb_nodes_clust = int(args.min_nodes_clust)
 min_tot_nodes = int(args.min_nodes_analyse)
 user_nb_supports = args.user_nb_supports
+writeAll = args.writeAll
+if (writeAll.upper()=="TRUE"):
+    writeAll=True
+else:
+    writeAll=False
+reassign_unclassified = args.reassign
+if (reassign_unclassified.upper()=="TRUE"):
+    reassign_unclassified=True
+else:
+    reassign_unclassified=False
 log_file = args.log_out
 logging.basicConfig(filename=log_file, level=logging.INFO, format='%(message)s')
 
@@ -78,7 +92,7 @@ def print_and_log(string):
     logging.info(string)
 
 def fuse_clusterings(subject, obj, clust, rel_name, nb_nodes_clust, min_tot_nodes,
-                     methods, datatypes, driver, out, opt=True, user_nb_sup=None):
+                     methods, datatypes, driver, out, opt=True, user_nb_sup=None, writeAll=False, reassign_unclassified=False):
     '''
 
         Parameters
@@ -116,11 +130,24 @@ def fuse_clusterings(subject, obj, clust, rel_name, nb_nodes_clust, min_tot_node
 
         '''
 
-    clust_algos = ["Markov", "Louvain"]
-
     with driver.session() as session:
-        max_nb_sup_in_graph = session.run("MATCH ()-[r:" + rel_name + "]->() RETURN max(r.nb_supports) as max")
-        max_nb_sup_in_graph = int([record['max'] for record in max_nb_sup_in_graph][0])
+        clust_node = "(c:" + clust + ":" + subject + ")"
+        datatypes_cond = "c:"
+        for datatype in datatypes:
+            if datatype == datatypes[0]:
+                datatypes_cond = datatypes_cond + datatype
+            else:
+                datatypes_cond = datatypes_cond + " OR c:" + datatype
+        methods_cond = "c:"
+        for method in methods:
+            if method == methods[0]:
+                methods_cond = methods_cond + method
+            else:
+                methods_cond = methods_cond + " OR c:" + method
+        max_pos_nb_sup = session.run("MATCH " + clust_node + " WHERE (" + datatypes_cond + ") AND (" + methods_cond + ") RETURN count(distinct labels(c)) as max")
+        max_pos_nb_sup = int([record['max'] for record in max_pos_nb_sup][0])
+
+    clust_algos = ["Markov", "Louvain"]
 
     if opt == True:
         MQ_louvain_markov = []
@@ -131,10 +158,10 @@ def fuse_clusterings(subject, obj, clust, rel_name, nb_nodes_clust, min_tot_node
             nb_nodes_kept = []
             nb_clusters = []
 
-            for nb_supports in range(1, max_nb_sup_in_graph+1):
+            for nb_supports in range(1, max_pos_nb_sup+1):
                 nb_supp.append(nb_supports)
 
-                mq, nb_nodes, nb_clust = weighted_modularity(subject, obj, clust, rel_name, clust_algo, nb_nodes_clust, nb_supports, driver)
+                mq, nb_nodes, nb_clust = wModularization(subject, obj, clust, rel_name, clust_algo, nb_nodes_clust, nb_supports, max_pos_nb_sup, driver)
 
                 MQ.append(mq)
                 nb_nodes_kept.append(nb_nodes)
@@ -145,25 +172,28 @@ def fuse_clusterings(subject, obj, clust, rel_name, nb_nodes_clust, min_tot_node
             nb_clusters = np.asarray(nb_clusters)
             nb_supp = np.asarray(nb_supp)
 
-            nb_supports, max_MQ = find_opt_nb_supports(MQ, nb_supp, nb_nodes_kept, min_tot_nodes)
+            nb_supports, max_MQ = find_opt_nb_supports(MQ, nb_supp, nb_nodes_kept, min_tot_nodes, 0.05)
             MQ_louvain_markov.append(max_MQ)
             nb_supp_louvain_markov.append(nb_supports)
 
-        MQ_louvain_markov = np.asarray(MQ_louvain_markov)
-        nb_supp_louvain_markov = np.asarray(nb_supp_louvain_markov)
-
-        max_MQ_index = np.where(MQ_louvain_markov == max(MQ_louvain_markov))
-
-        if len(max_MQ_index[0]) > 1:
-            max_nb_supports = np.where(nb_supp_louvain_markov == max(nb_supp_louvain_markov))
-            if len(max_nb_supports[0]) > 1:
-                nb_supports = nb_supp_louvain_markov[1]
-                clust_algo = 'Markov'
-            else:
-                nb_supports = nb_supp_louvain_markov[max_nb_supports[0][0]]
-                clust_algo = clust_algos[max_nb_supports[0][0]]
+        # If both algo yield to same nb_supports, keep algo yielding to maxMQ
+        if nb_supp_louvain_markov[0] == nb_supp_louvain_markov[1]:
+            nb_supports = nb_supp_louvain_markov[0]
+            max_MQ = max(MQ_louvain_markov)
+            max_MQ_index = np.where(MQ_louvain_markov == max_MQ)
+            clust_algo = clust_algos[max_MQ_index[0][0]]
+        # Else, chose between the 2 using find_opt_nb_suports
         else:
-            nb_supports = nb_supp_louvain_markov[max_MQ_index[0][0]]
+            # nb_supp_louvain_markov must be sorted by increasing nb_supports
+            if nb_supp_louvain_markov[0] > nb_supp_louvain_markov[1]:
+                 nb_supp_louvain_markov = np.asarray([nb_supp_louvain_markov[1], nb_supp_louvain_markov[0]])
+                 MQ_louvain_markov = np.asanyarray([MQ_louvain_markov[1], MQ_louvain_markov[0]])
+                 clust_algos = ["Louvain", "Markov"]
+            else:
+                nb_supp_louvain_markov = np.asarray(nb_supp_louvain_markov)
+                MQ_louvain_markov = np.asanyarray(MQ_louvain_markov)
+            nb_supports, max_MQ = find_opt_nb_supports(MQ_louvain_markov, nb_supp_louvain_markov, np.asarray([min_tot_nodes, min_tot_nodes]), min_tot_nodes, 0.05)
+            max_MQ_index = np.where(MQ_louvain_markov == max_MQ)
             clust_algo = clust_algos[max_MQ_index[0][0]]
 
         print_and_log("Optimal number of supports is %s" % nb_supports)
@@ -176,7 +206,7 @@ def fuse_clusterings(subject, obj, clust, rel_name, nb_nodes_clust, min_tot_node
         nb_clusters = []
         nb_supp_louvain_markov = [user_nb_sup, user_nb_sup]
         for clust_algo in clust_algos:
-            mq, nb_nodes, nb_clust = weighted_modularity(subject, obj, clust, rel_name, clust_algo, nb_nodes_clust, nb_supports, driver)
+            mq, nb_nodes, nb_clust = wModularization(subject, obj, clust, rel_name, clust_algo, nb_nodes_clust, nb_supports, max_pos_nb_sup, driver)
             MQ_louvain_markov.append(mq)
             nb_nodes_kept.append(nb_nodes)
             nb_clusters.append(nb_clust)
@@ -187,12 +217,13 @@ def fuse_clusterings(subject, obj, clust, rel_name, nb_nodes_clust, min_tot_node
 
         max_MQ_index = np.where(MQ_louvain_markov == max(MQ_louvain_markov))
 
+        # if both algo yield to same MQ, keep Markov
         if len(max_MQ_index[0]) > 1:
-            nb_supports = nb_supp_louvain_markov[1]
             clust_algo = 'Markov'
+            max_MQ = MQ_louvain_markov[0]
         else:
-            nb_supports = nb_supp_louvain_markov[max_MQ_index[0][0]]
             clust_algo = clust_algos[max_MQ_index[0][0]]
+            max_MQ = max(MQ_louvain_markov)
 
     if clust_algo == "Louvain":
         node_clust_name = "LouvainCommunity"
@@ -206,15 +237,44 @@ def fuse_clusterings(subject, obj, clust, rel_name, nb_nodes_clust, min_tot_node
     else:
         communities = "(c:UserNbSupports:"  + subject + ":" + node_clust_name + ":" + rel_name + "{nb_supports:" + str(nb_supports) + "})"
 
-    results = get_main_results(subject, obj, clust, rel_name, clust_algo, nb_nodes_clust, nb_supports, driver)
+    main_results, small_clusters, unclassified = get_main_results(subject, obj, clust, rel_name, clust_algo, nb_nodes_clust, nb_supports, driver)
 
-    if results is not None:
-        nb_nodes_kept = len(results)
-        nb_clusters = len(np.unique(results[:, 1]))
+    # Reassign unclassified nodes
+    if small_clusters is None and unclassified is None:
+        reassign_unclassified = False
+        print_and_log('No node to reassign')
+
+    if reassign_unclassified:
+        if small_clusters is not None and unclassified is not None:
+            all_unclassified = np.concatenate([small_clusters, unclassified])
+        elif small_clusters is not None:
+            all_unclassified = np.copy(small_clusters)
+        elif unclassified is not None:
+            all_unclassified = np.copy(unclassified)
+
+        reassigned = reassign(subject, obj, rel_name, main_results, all_unclassified, driver)
+
+
+    if main_results is not None:
+        nb_nodes_kept = len(main_results)
+        nb_clusters = len(np.unique(main_results[:, 1]))
         print_and_log('%s nodes classified in %s clusters after remooving too small clusters (min_accepted_nb_nodes_in_clusters set to %s in the configuration file)' % (nb_nodes_kept, nb_clusters, nb_nodes_clust))
-        print_and_log("Weighted Modularization Quality for the clustering is %s" % str(max(MQ_louvain_markov)))
+        print_and_log("Weighted Modularization Quality for the clustering is %s" % str(max_MQ))
+        if reassign_unclassified:
+            print_and_log('%s unclassified nodes reassigned to consensus clusters' %str(len(reassigned)))
+            print_and_log(str(reassigned))
+            small_clusters = None
+            unclassified = None
+            writeAll = False
+            main_results = np.concatenate([main_results, reassigned])
+
         print_and_log('Storing results into the graph')
-        results_to_neo4j(results, subject, obj, rel_name, clust_algo, nb_supports, driver, opt)
+
+        # Set nodes in small clusters as unclassified
+        if small_clusters is not None:
+            small_clusters[:, 1] =  'unclassified'
+
+        results_to_neo4j(main_results, small_clusters, unclassified, subject, obj, rel_name, clust_algo, nb_supports, driver, opt)
 
         obj_nodes = "(o:"+ obj + ":" + subject + ")"
         check_graph_query = "MATCH " + obj_nodes + "-[r:" + rel_clust_name + "]-"  + communities + " RETURN o, r, c"
@@ -222,7 +282,21 @@ def fuse_clusterings(subject, obj, clust, rel_name, nb_nodes_clust, min_tot_node
 
         head = obj + "\t" + clust
         file = open(out, "w")
-        np.savetxt(file, results, fmt='%s', header=head, comments='', delimiter='\t')
+
+        if writeAll:
+            if small_clusters is not None:
+                if unclassified is not None:
+                    np.savetxt(file, np.concatenate([main_results, small_clusters, unclassified]), fmt='%s', header=head, comments='', delimiter='\t')
+                else:
+                    np.savetxt(file, np.concatenate([main_results, small_clusters]), fmt='%s', header=head, comments='', delimiter='\t')
+            else:
+                if unclassified is not None:
+                    np.savetxt(file, np.concatenate([main_results, unclassified]), fmt='%s', header=head, comments='', delimiter='\t')
+                else:
+                    np.savetxt(file, main_results, fmt='%s', header=head, comments='', delimiter='\t')
+        else:
+            np.savetxt(file, main_results, fmt='%s', header=head, comments='', delimiter='\t')
+
         file.close()
 
         print_and_log('Clustering results stored in file : %s' % out)
@@ -230,7 +304,7 @@ def fuse_clusterings(subject, obj, clust, rel_name, nb_nodes_clust, min_tot_node
         exit("ERROR: Can not cluster the graph (only 1 cluster found). Please, use a lower number of supports.")
 
 
-def results_to_neo4j(results, subject, obj, rel_name, clust_algo, nb_supports, driver, opt=False):
+def results_to_neo4j(main_results, small_clusters, unclassified, subject, obj, rel_name, clust_algo, nb_supports, driver, opt=False):
 
     if clust_algo == "Louvain":
         node_clust_name = "LouvainCommunity"
@@ -239,7 +313,7 @@ def results_to_neo4j(results, subject, obj, rel_name, clust_algo, nb_supports, d
         node_clust_name = "MarkovCluster"
         rel_clust_name = "FROM_MARKOVCLUST"
 
-    for community in np.unique(results[:, 1]):
+    for community in np.unique(main_results[:, 1]):
         community_id = rel_name + "_" + community
         if opt == True:
             community_node = "(c:OptimalNbSupports:"  + subject + ":" + node_clust_name + ":" + rel_name + \
@@ -255,7 +329,7 @@ def results_to_neo4j(results, subject, obj, rel_name, clust_algo, nb_supports, d
             session.run(create_community_node)
 
             # Get all nodes belonging to same community
-            nodes = [node for node in results[np.where(results == str(community))[0], :][:, 0]]
+            nodes = [node for node in main_results[np.where(main_results == str(community))[0], :][:, 0]]
 
             for node in nodes:
                 # Make relationship between community node and patients nodes
@@ -263,13 +337,63 @@ def results_to_neo4j(results, subject, obj, rel_name, clust_algo, nb_supports, d
                 "MATCH " + community_node + " MERGE (o)-[r:" + rel_clust_name + "]-(c) RETURN o, r, c"
                 session.run(make_rel)
 
+    if small_clusters is not None:
+        for community in np.unique(small_clusters[:, 1]):
+            community_id = rel_name + "_" + community
+            if opt == True:
+                community_node = "(c:OptimalNbSupports:SmallCommunity:"  + subject + ":" + node_clust_name + ":" + rel_name + \
+                " {id: '" +  community_id + "'" + ", nb_supports: " + str(nb_supports) + ", clust:'" + community + "'})"
+
+            else:
+                community_node = "(c:UserNbSupports:SmallCommunity:"  + subject + ":" + node_clust_name + ":" + rel_name + \
+                " {id: '" +  community_id + "'" + ", nb_supports: " + str(nb_supports) + ", clust:'" + community + "'})"
+
+            create_community_node = "MERGE " + community_node
+
+            with driver.session() as session:
+                session.run(create_community_node)
+
+                # Get all nodes belonging to same community
+                nodes = [node for node in small_clusters[np.where(small_clusters == str(community))[0], :][:, 0]]
+
+                for node in nodes:
+                    # Make relationship between community node and patients nodes
+                    make_rel = "MATCH (o:" + obj + ":" + subject + " {id: '" + str(node) + "'}) " + \
+                    "MATCH " + community_node + " MERGE (o)-[r:" + rel_clust_name + "]-(c) RETURN o, r, c"
+                    session.run(make_rel)
+
+    if unclassified is not None:
+        for community in np.unique(unclassified[:, 1]):
+            community_id = rel_name + "_" + community
+            if opt == True:
+                community_node = "(c:OptimalNbSupports:Unclassified:"  + subject + ":" + node_clust_name + ":" + rel_name + \
+                " {id: '" +  community_id + "'" + ", nb_supports: " + str(nb_supports) + ", clust:'" + community + "'})"
+
+            else:
+                community_node = "(c:UserNbSupports:Unclassified:"  + subject + ":" + node_clust_name + ":" + rel_name + \
+                " {id: '" +  community_id + "'" + ", nb_supports: " + str(nb_supports) + ", clust:'" + community + "'})"
+
+            create_community_node = "MERGE " + community_node
+
+            with driver.session() as session:
+                session.run(create_community_node)
+
+                # Get all nodes belonging to same community
+                nodes = [node for node in unclassified[np.where(unclassified == str(community))[0], :][:, 0]]
+
+                for node in nodes:
+                    # Make relationship between community node and patients nodes
+                    make_rel = "MATCH (o:" + obj + ":" + subject + " {id: '" + str(node) + "'}) " + \
+                    "MATCH " + community_node + " MERGE (o)-[r:" + rel_clust_name + "]-(c) RETURN o, r, c"
+                    session.run(make_rel)
+
 
 def main():
     driver = GraphDatabase.driver(uri=neo_localhost, auth=(neo_id, neo_pwd))
     if user_nb_supports == 'False':
-        fuse_clusterings(subject, obj, clust, rel_name, nb_nodes_clust, min_tot_nodes, methods, datatypes, driver, out, opt=True, user_nb_sup=None)
+        fuse_clusterings(subject, obj, clust, rel_name, nb_nodes_clust, min_tot_nodes, methods, datatypes, driver, out, opt=True, user_nb_sup=None, writeAll=writeAll, reassign_unclassified=reassign_unclassified)
     else:
-        fuse_clusterings(subject, obj, clust, rel_name, nb_nodes_clust, min_tot_nodes, methods, datatypes, driver, out, opt=False, user_nb_sup=int(user_nb_supports))
+        fuse_clusterings(subject, obj, clust, rel_name, nb_nodes_clust, min_tot_nodes, methods, datatypes, driver, out, opt=False, user_nb_sup=int(user_nb_supports), writeAll=writeAll, reassign_unclassified=reassign_unclassified)
     driver.close()
 
 

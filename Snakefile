@@ -6,6 +6,8 @@ DATABASE = config['database']
 CLUSTERINGS_FOLDER = config['clusterings_folder']
 OBJECT_NODES_NAME = config['object_nodes_name'],
 CLUSTER_NODES_NAME = config['cluster_nodes_name']
+WRITE_ALL = config['write_all']
+REASSIGN = config['reassign_unclassified']
 
 # Run ClustOmics
 rule All:
@@ -13,8 +15,7 @@ rule All:
         clust="out/{subject}.{rel_name}.FuseClusterings.log",
         MQ_plot="out/plots/{subject}/MQ_{subject}.{rel_name}.svg",
         survival="out/survival/{subject}/{subject}.{rel_name}.ClustOmicsClustering.pval",
-        clinical="out/clinical/{subject}/{subject}.{rel_name}.ClustOmicsClustering.pval",
-        PCA_plot="out/plots/{subject}/PCA_{subject}.{rel_name}.ClustOmicsClustering_exp.png"
+        clinical="out/clinical/{subject}/{subject}.{rel_name}.ClustOmicsClustering.pval"
     output:
         "out/{subject}.{rel_name}.all.log"
     shell:
@@ -70,7 +71,7 @@ rule FuseClusterings:
         "python dev/FuseClusterings.py -out_cls {output.out_clust} -id {NEO4J_ID} -pwd {NEO4J_PASSWORD} -host {DATABASE} \
         -subj {wildcards.subject} -obj_name {OBJECT_NODES_NAME} -cls_name {CLUSTER_NODES_NAME} -rel {wildcards.rel_name} \
         -dt '{params.datatypes}' -met '{params.methods}' -min_clust {params.min_size_clust} \
-        -min_nodes {params.min_size_consensus} -out {output.out_log} -nb_sup False "
+        -min_nodes {params.min_size_consensus} -out {output.out_log} -nb_sup False --writeAll {WRITE_ALL} --reassign {REASSIGN}"
 
 rule FuseClusteringsWithNbSupp:
     input:
@@ -88,14 +89,14 @@ rule FuseClusteringsWithNbSupp:
         "python dev/FuseClusterings.py -out_cls {output.out_clust} -id {NEO4J_ID} -pwd {NEO4J_PASSWORD} -host {DATABASE} \
         -subj {wildcards.subject} -obj_name {OBJECT_NODES_NAME} -cls_name {CLUSTER_NODES_NAME} -rel {wildcards.rel_name} \
         -dt '{params.datatypes}' -met '{params.methods}' -min_clust {params.min_size_clust} \
-        -min_nodes {params.min_size_consensus} -out {output.out_log} -nb_sup {wildcards.nb_supports} "
+        -min_nodes {params.min_size_consensus} -out {output.out_log} -nb_sup {wildcards.nb_supports} --writeAll {WRITE_ALL} --reassign {REASSIGN}"
 
 # Compute and plot the Modularization Quality for each possible number of supports
-rule PlotGraphMetricsMQ:
+rule PlotMQ:
     input:
         "out/{subject}.{rel_name}.IntegrationEdges.log",
     output:
-        "out/plots/{subject}/MQ_{subject}.{rel_name}.svg"
+        "out/plots/{subject}/wMQ_{subject}.{rel_name}.svg"
     params:
          datatypes=lambda wildcards: config['datatypes'][wildcards.rel_name],
          methods=lambda wildcards: config['methods'][wildcards.rel_name],
@@ -118,7 +119,19 @@ rule SurvivalClustOmics:
         fig="out/survival/{subject}/{subject}.{rel_name}.ClustOmicsClustering.svg"
     shell:
         "mkdir -p out/survival/{wildcards.subject};"
-        "Rscript dev/analyse_results/Survival.R -c {input.clust} -s {input.surv} -o {output.out} -f {output.fig}"
+        "Rscript dev/analyse_results/SurvivalHeinze.R -c {input.clust} -s {input.surv} -o {output.out} -f {output.fig}"
+
+# Compute Survival Analysis for COCA clusterings
+rule SurvivalCOCA:
+    input:
+        surv="raw_data/{subject}/survival",
+        clust="data/coca/{subject}_{datatype}_COCA.clst"
+    output:
+        out="out/survival/coca/{subject}_{datatype}_COCA.pval",
+        fig="out/survival/coca/{subject}_{datatype}_COCA.svg"
+    shell:
+        "mkdir -p out/survival/coca;"
+        "Rscript dev/analyse_results/SurvivalHeinze.R -c {input.clust} -s {input.surv} -o {output.out} -f {output.fig}"
 
 # Compute Survival Analysis for raw clusterings
 rule SurvivalRaw:
@@ -130,7 +143,7 @@ rule SurvivalRaw:
         fig="out/survival/{subject}/{subject}_{datatype}_{method}.svg"
     shell:
         "mkdir -p out/survival/{wildcards.subject};"
-        "Rscript dev/analyse_results/Survival.R -c {input.clust} -s {input.surv} -o {output.out} -f {output.fig}"
+        "Rscript dev/analyse_results/SurvivalHeinze.R -c {input.clust} -s {input.surv} -o {output.out} -f {output.fig}"
 
 # Compute Clinical Labels Enrichment Analysis for ClustOmics clusterings
 rule ClinicalClustOmics:
@@ -139,6 +152,17 @@ rule ClinicalClustOmics:
         clust="out/results/{subject}/{subject}.{rel_name}.ClustOmicsClustering"
     output:
         "out/clinical/{subject}/{subject}.{rel_name}.ClustOmicsClustering.pval"
+    shell:
+        "mkdir -p out/clinical/{wildcards.subject};"
+        "Rscript dev/analyse_results/ClinicalLabelsEnrichment.R -s {wildcards.subject} -c {input.clust} -f {input.clin} -o {output}"
+
+# Compute Clinical Labels Enrichment Analysis for COCA clusterings
+rule ClinicalCOCA:
+    input:
+        clin="raw_data/clinical/{subject}",
+        clust="data/coca/{subject}_{datatype}_COCA.clst"
+    output:
+        "out/clinical/coca/{subject}_{datatype}_COCA.pval"
     shell:
         "mkdir -p out/clinical/{wildcards.subject};"
         "Rscript dev/analyse_results/ClinicalLabelsEnrichment.R -s {wildcards.subject} -c {input.clust} -f {input.clin} -o {output}"
@@ -154,21 +178,6 @@ rule ClinicalRaw:
         "mkdir -p out/clinical/{wildcards.subject};"
         "Rscript dev/analyse_results/ClinicalLabelsEnrichment.R -s {wildcards.subject} -c {input.clust} -f {input.clin} -o {output}"
 
-# PCA
-rule PCA:
-    input:
-        "out/results/{subject}/{subject}.{rel_name}.{clustering}"
-    output:
-        "out/plots/{subject}/PCA_{subject}.{rel_name}.{clustering}_exp.png",
-        "out/plots/{subject}/PCA_{subject}.{rel_name}.{clustering}_mirna.png",
-        "out/plots/{subject}/PCA_{subject}.{rel_name}.{clustering}_met.png"
-
-    shell:
-        "mkdir -p out/plots/{wildcards.subject};"
-        "Rscript dev/analyse_results/MultiOmicsPCA.R -c {wildcards.subject} \
-        -o out/plots/{wildcards.subject}/PCA_{wildcards.subject}.{wildcards.rel_name}.{wildcards.clustering}\
-        -r {input}"
-
 rule AllSurvClinMulti:
     input:
         survival_PINS="out/survival/{subject}/{subject}_multiomics_PINS.pval",
@@ -183,7 +192,7 @@ rule AllSurvClinMulti:
         clinical_NEMO="out/clinical/{subject}/{subject}_multiomics_NEMO.pval",
 
     output:
-        "out/{subject}.surv_clin.log"
+        "out/{subject}.surv_clin_multi.log"
     shell:
         "touch {output}"
 
@@ -193,21 +202,21 @@ rule AllSurvClinSingle:
         survival_SNF="out/survival/{subject}/{subject}_{omic}_SNF.pval",
         survival_rMKL="out/survival/{subject}/{subject}_{omic}_rMKL.pval",
         survival_NEMO="out/survival/{subject}/{subject}_{omic}_NEMO.pval",
+        survival_kmeans="out/survival/{subject}/{subject}_{omic}_kmeans.pval",
         clinical_PINS="out/clinical/{subject}/{subject}_{omic}_PINS.pval",
         clinical_SNF="out/clinical/{subject}/{subject}_{omic}_SNF.pval",
         clinical_rMKL="out/clinical/{subject}/{subject}_{omic}_rMKL.pval",
-        clinical_NEMO="out/clinical/{subject}/{subject}_{omic}_NEMO.pval"
-
+        clinical_NEMO="out/clinical/{subject}/{subject}_{omic}_NEMO.pval",
+        clinical_kmeans="out/clinical/{subject}/{subject}_{omic}_kmeans.pval"
     output:
         "out/{subject}_{omic}.surv_clin_single.log"
     shell:
         "touch {output}"
 
-
 # Run Survival & Clinical analysis for input clusterings
 rule AllSurvClin:
     input:
-        surv_clin_multi="out/{subject}.surv_clin.log",
+        surv_clin_multi="out/{subject}.surv_clin_multi.log",
         surv_clin_exp="out/{subject}_expression.surv_clin_single.log",
         surv_clin_mirna="out/{subject}_mirna.surv_clin_single.log",
         surv_clin_met="out/{subject}_methylation.surv_clin_single.log"

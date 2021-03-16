@@ -1,0 +1,9 @@
+
+Integrating clusterings from : SARC
+
+On datatypes : ['expression', 'methylation', 'mirna']
+
+For methods : ['PINS', 'NEMO', 'SNF', 'rMKL', 'kmeans']
+
+Relationship type : SARC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans
+Building the integration graph. Integration Edges will be named "SARC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans".

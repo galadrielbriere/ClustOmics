@@ -1,9 +1,0 @@
-gender	0.182
-age_at_initial_pathologic_diagnosis	0.063
-pathologic_M	0.094
-pathologic_N	0.896
-pathologic_T	0.315
-pathologic_stage	0.613
-new_neoplasm_event_type	0.27
-melanoma_clark_level_value	0.84
-melanoma_ulceration_indicator	0.615

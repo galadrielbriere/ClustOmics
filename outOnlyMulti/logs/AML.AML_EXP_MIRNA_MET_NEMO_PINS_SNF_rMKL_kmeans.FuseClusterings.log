@@ -1,0 +1,15 @@
+Integrating clusterings from : AML
+On datatypes : ['expression', 'methylation', 'mirna']
+For methods : ['PINS', 'NEMO', 'SNF', 'rMKL', 'kmeans']
+Relationship type : AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans
+Optimal number of supports is 8
+The graph will be clustered with Markov clustering using only IntegrationEdges with nb_supports >= 8
+168 nodes classified in 7 clusters after remooving too small clusters (min_accepted_nb_nodes_in_clusters set to 8 in the configuration file)
+Weighted Modularization Quality for the clustering is 0.5307918063118188
+2 unclassified nodes reassigned to consensus clusters
+[['TCGA.AB.2805.03' '5']
+ ['TCGA.AB.2866.03' '5']]
+Storing results into the graph
+Check the graph with the following Cypher query : 
+ MATCH (o:Patient:AML)-[r:FROM_MARKOVCLUST]-(c:OptimalNbSupports:AML:MarkovCluster:AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans) RETURN o, r, c
+Clustering results stored in file : out/results/AML/AML.AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans.ClustOmicsClustering

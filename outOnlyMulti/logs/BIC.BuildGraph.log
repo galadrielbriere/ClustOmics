@@ -1,0 +1,63 @@
+Loading results from BIC in ./data 
+
+Initiating graph from BIC_metadata.txt metadata.
+Loading ./data/BIC/BIC_mirna_SNF.clst clustering results.
+- computed on datatype : mirna
+- computed with method : SNF
+Loading ./data/BIC/BIC_mirna_rMKL.clst clustering results.
+- computed on datatype : mirna
+- computed with method : rMKL
+Loading ./data/BIC/BIC_mirna_kmeans.clst clustering results.
+- computed on datatype : mirna
+- computed with method : kmeans
+Loading ./data/BIC/BIC_methylation_NEMO.clst clustering results.
+- computed on datatype : methylation
+- computed with method : NEMO
+Loading ./data/BIC/BIC_multiomics_SNF.clst clustering results.
+- computed on datatype : multiomics
+- computed with method : SNF
+Loading ./data/BIC/BIC_methylation_kmeans.clst clustering results.
+- computed on datatype : methylation
+- computed with method : kmeans
+Loading ./data/BIC/BIC_expression_PINS.clst clustering results.
+- computed on datatype : expression
+- computed with method : PINS
+Loading ./data/BIC/BIC_expression_SNF.clst clustering results.
+- computed on datatype : expression
+- computed with method : SNF
+Loading ./data/BIC/BIC_mirna_NEMO.clst clustering results.
+- computed on datatype : mirna
+- computed with method : NEMO
+Loading ./data/BIC/BIC_multiomics_PINS.clst clustering results.
+- computed on datatype : multiomics
+- computed with method : PINS
+Loading ./data/BIC/BIC_expression_rMKL.clst clustering results.
+- computed on datatype : expression
+- computed with method : rMKL
+Loading ./data/BIC/BIC_multiomics_NEMO.clst clustering results.
+- computed on datatype : multiomics
+- computed with method : NEMO
+Loading ./data/BIC/BIC_methylation_SNF.clst clustering results.
+- computed on datatype : methylation
+- computed with method : SNF
+Loading ./data/BIC/BIC_methylation_PINS.clst clustering results.
+- computed on datatype : methylation
+- computed with method : PINS
+Loading ./data/BIC/BIC_methylation_rMKL.clst clustering results.
+- computed on datatype : methylation
+- computed with method : rMKL
+Loading ./data/BIC/BIC_expression_kmeans.clst clustering results.
+- computed on datatype : expression
+- computed with method : kmeans
+Loading ./data/BIC/BIC_expression_NEMO.clst clustering results.
+- computed on datatype : expression
+- computed with method : NEMO
+Loading ./data/BIC/BIC_multiomics_MCCA.clst clustering results.
+- computed on datatype : multiomics
+- computed with method : MCCA
+Loading ./data/BIC/BIC_mirna_PINS.clst clustering results.
+- computed on datatype : mirna
+- computed with method : PINS
+Loading ./data/BIC/BIC_multiomics_rMKL.clst clustering results.
+- computed on datatype : multiomics
+- computed with method : rMKL

@@ -1,0 +1,9 @@
+
+Integrating clusterings from : SKCM
+
+On datatypes : ['expression', 'methylation', 'mirna']
+
+For methods : ['PINS', 'NEMO', 'SNF', 'rMKL', 'kmeans']
+
+Relationship type : SKCM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans
+Building the integration graph. Integration Edges will be named "SKCM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans".

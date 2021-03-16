@@ -1,0 +1,9 @@
+age_at_initial_pathologic_diagnosis	0.573
+pathologic_M	0
+pathologic_N	0.047
+pathologic_T	0.00407920792079208
+neoplasm_histologic_grade	0.0285346534653465
+hemoglobin_result	0.52
+platelet_qualitative_result	0.116
+serum_calcium_result	0.823
+white_cell_count_result	0.048

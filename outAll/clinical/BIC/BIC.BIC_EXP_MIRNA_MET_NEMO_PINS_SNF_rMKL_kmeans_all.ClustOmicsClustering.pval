@@ -1,0 +1,11 @@
+gender	0.0112970297029703
+age_at_initial_pathologic_diagnosis	0
+pathologic_M	0.000198019801980198
+pathologic_N	9.9009900990099e-06
+pathologic_T	0
+pathologic_stage	0
+histological_type	0
+new_neoplasm_event_type	0.064
+PAM50Call_RNAseq	0
+breast_carcinoma_estrogen_receptor_status	0
+breast_carcinoma_progesterone_receptor_status	0

@@ -1,0 +1,10 @@
+gender	0.165
+age_at_initial_pathologic_diagnosis	0.039
+pathologic_M	0.868
+pathologic_N	0.429
+pathologic_T	0.0214059405940594
+pathologic_stage	0.196
+histological_type	0.239
+new_neoplasm_event_type	0.983
+tobacco_smoking_history	0.119
+number_pack_years_smoked	0.557

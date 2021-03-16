@@ -1,0 +1,14 @@
+gender	0.000386138613861386
+age_at_initial_pathologic_diagnosis	0.00759405940594059
+pathologic_M	0.652
+pathologic_N	0.301
+pathologic_T	0.095
+pathologic_stage	0.112
+histological_type	0.000188118811881188
+new_neoplasm_event_type	0.625
+neoplasm_histologic_grade	0.00099009900990099
+adjacent_hepatic_tissue_inflammation_extent_type	0.29
+albumin_result_specified_value	0.491
+creatinine_value_in_mg_dl	0.987
+fetoprotein_outcome_value	0
+fibrosis_ishak_score	0.302

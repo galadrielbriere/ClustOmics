@@ -1,0 +1,20 @@
+Integrating clusterings from : SKCM
+On datatypes : ['expression', 'methylation', 'mirna']
+For methods : ['PINS', 'NEMO', 'SNF', 'rMKL', 'kmeans']
+Relationship type : SKCM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans
+Optimal number of supports is 9
+The graph will be clustered with Markov clustering using only IntegrationEdges with nb_supports >= 9
+344 nodes classified in 7 clusters after remooving too small clusters (min_accepted_nb_nodes_in_clusters set to 8 in the configuration file)
+Weighted Modularization Quality for the clustering is 0.3397765422922608
+7 unclassified nodes reassigned to consensus clusters
+[['TCGA.FS.A1YX.06' '7']
+ ['TCGA.EE.A2MU.06' '6']
+ ['TCGA.D3.A2J7.06' '6']
+ ['TCGA.YD.A9TB.06' '2']
+ ['TCGA.ER.A19O.06' '5']
+ ['TCGA.D3.A3C1.06' '5']
+ ['TCGA.EB.A5KH.06' '5']]
+Storing results into the graph
+Check the graph with the following Cypher query : 
+ MATCH (o:Patient:SKCM)-[r:FROM_MARKOVCLUST]-(c:OptimalNbSupports:SKCM:MarkovCluster:SKCM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans) RETURN o, r, c
+Clustering results stored in file : out/results/SKCM/SKCM.SKCM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans.ClustOmicsClustering

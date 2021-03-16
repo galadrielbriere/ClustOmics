@@ -33,7 +33,7 @@ def call_louvain_algo(subject, obj, clust, rel_name, nb_supports, driver):
         session.run(make_graph_cat)
 
         call_louvain = "CALL gds.louvain.stream('" + cat_graph_name +\
-            "',{relationshipWeightProperty:'weight', maxIterations:10, seedProperty:'42'})" +\
+            "',{relationshipWeightProperty:'weight', maxIterations:10})" +\
             "YIELD nodeId, communityId RETURN gds.util.asNode(nodeId).id as id, communityId"
         results = session.run(call_louvain)
         results = [[record['id'], record['communityId']] for record in results]
@@ -69,7 +69,7 @@ def call_markov_algo(subject, obj, clust, rel_name, nb_supports, driver):
         o2 = pair[1]
         if o1 not in o_nodes:
             o_nodes.append(o1)
-        if o2 not in o_nodes: 
+        if o2 not in o_nodes:
             o_nodes.append(o2)
 
     clustering = []
@@ -103,6 +103,17 @@ def get_main_results(subject, obj, clust, rel_name, clust_algo, nb_nodes_clust, 
     main_communities = [[community, len(np.where(results == community)[0])] for community in communities if len(np.where(results == community)[0]) >= nb_nodes_clust]
     main_communities = [ [np.int(j) for j in i] for i in main_communities]
     main_communities = np.array(main_communities)
+    small_communities = [[community, len(np.where(results == community)[0])] for community in communities if len(np.where(results == community)[0]) < nb_nodes_clust]
+    small_communities = [ [np.int(j) for j in i] for i in small_communities]
+    small_communities = np.array(small_communities)
+
+    with driver.session() as session:
+        obj1_nodes = "(o1:"+ obj + ":" + subject + ")"
+        obj2_nodes = "(o2:"+ obj + ":" + subject + ")"
+        rel = "-[r:" + rel_name + "]-"
+        all_objects = "MATCH " + obj1_nodes + rel + obj2_nodes + " RETURN distinct(o1.id) as id"
+        all_objects = session.run(all_objects)
+        all_objects = [record['id'] for record in all_objects]
 
     if len(main_communities) > 1:
         nb_nodes_kept = np.sum(main_communities, axis=0)[1]
@@ -110,27 +121,44 @@ def get_main_results(subject, obj, clust, rel_name, clust_algo, nb_nodes_clust, 
         main_results = [[result[0],int(result[1])] for result in results if int(result[1]) in main_communities[:,0]]
         main_results = np.array(main_results)
 
-        return(main_results)
+        if len(small_communities) > 1:
+            small = [[result[0],int(result[1])] for result in results if int(result[1]) in small_communities[:,0]]
+            small = np.array(small)
+        else:
+            small = None
+
+        if small is None:
+            sum_len = len(main_results)
+        else:
+            sum_len = len(main_results) + len(small)
+
+        if sum_len < len(all_objects):
+            if small is None:
+                unclassified = np.setdiff1d(all_objects, main_results[:,0])
+                unclassified = [[objid, "unclassified"] for objid in unclassified]
+                unclassified = np.array(unclassified)
+            else:
+                unclassified = np.setdiff1d(all_objects, np.concatenate([main_results[:,0], small[:,0]]))
+                unclassified = [[objid, "unclassified"] for objid in unclassified]
+                unclassified = np.array(unclassified)
+
+        else:
+            unclassified = None
+
+        return(main_results, small, unclassified)
 
     else:
-        return(None)
+        return(None, None, None)
 
 
-
-def weighted_modularity(subject, obj, clust, rel_name, clust_algo, nb_nodes_clust, nb_supports, driver):
+def wModularization(subject, obj, clust, rel_name, clust_algo, nb_nodes_clust, nb_supports, max_pos_nb_sup, driver):
     obj_nodes = "(o:"+ obj + ":" + subject + ")"
     obj1_nodes = "(o1:"+ obj + ":" + subject + ")"
     obj2_nodes = "(o2:"+ obj + ":" + subject + ")"
     rel = "[r:" + rel_name + "]"
     rel_condition = "r.nb_supports >=" + str(nb_supports)
 
-    with driver.session() as session:
-        max_nb_supports_q = "MATCH " + obj1_nodes + "-" + rel + "-" + obj2_nodes + " RETURN max(r.nb_supports) as max"
-        res = session.run(max_nb_supports_q)
-        max_nb_supports = int([record["max"] for record in res][0])
-
-
-    main_results = get_main_results(subject, obj, clust, rel_name, clust_algo, nb_nodes_clust, nb_supports, driver)
+    main_results, small_clusters, unclassified = get_main_results(subject, obj, clust, rel_name, clust_algo, nb_nodes_clust, nb_supports, driver)
 
     if main_results is not None:
         with driver.session() as session:
@@ -152,7 +180,7 @@ def weighted_modularity(subject, obj, clust, rel_name, clust_algo, nb_nodes_clus
 
                     res_e_inter = session.run(e_inter_query)
                     e_inter = int([record['sum'] for record in res_e_inter][0])
-                    e_inter = e_inter/(max_nb_supports*len(nodes_in_clust)*len(nodes_out_clust))
+                    e_inter = e_inter/(max_pos_nb_sup*len(nodes_in_clust)*len(nodes_out_clust))
 
                     somme_inter = somme_inter + e_inter
 
@@ -166,7 +194,7 @@ def weighted_modularity(subject, obj, clust, rel_name, clust_algo, nb_nodes_clus
 
                     res_e_intra = session.run(e_intra_query)
                     e_intra = int([record['sum'] for record in res_e_intra][0])
-                    e_intra = 2*e_intra/(max_nb_supports*len(nodes_in_clust)*(len(nodes_in_clust)-1))
+                    e_intra = 2*e_intra/(max_pos_nb_sup*len(nodes_in_clust)*(len(nodes_in_clust)-1))
 
                 mq = e_intra - 1/(len(clusters)-1) * somme_inter
                 mq_cl.append(mq)
@@ -182,25 +210,53 @@ def weighted_modularity(subject, obj, clust, rel_name, clust_algo, nb_nodes_clus
 # nb_supp = np array listing each nb_supports used to compute MQ
 # nb_nodes_kept = np array listing the number of nodes returned for each number of supports tested
 # min_tot_nodes = minimum number of nodes accepted for a clustering
-def find_opt_nb_supports(MQ, nb_supp, nb_nodes_kept, min_tot_nodes):
+def find_opt_nb_supports(MQ, nb_supp, nb_nodes_kept, min_tot_nodes, epsilon):
     # Only clustering results with sufficient number of nodes
     min_nodes_ok = np.where(nb_nodes_kept >= min_tot_nodes)
     if len(min_nodes_ok[0]) > 0:
         reduce_MQ = MQ[min_nodes_ok]
         reduce_nb_supp = nb_supp[min_nodes_ok]
 
-        max_MQ_ind = np.where(reduce_MQ == max(reduce_MQ))
+        max_MQ = max(reduce_MQ)
+        interval_l = max_MQ - epsilon*max_MQ
 
-        if len(max_MQ_ind[0]) > 1 :
-            index = max_MQ_ind[0][len(max_MQ_ind[0])-1]
-        else:
-            index = max_MQ_ind
+        ok_MQ = np.where(reduce_MQ >= interval_l)
+        # Keep MQ obtained with max nb_supports
+        opt_MQ = reduce_MQ[ok_MQ[0][-1]]
+        opt_nb_sup = reduce_nb_supp[ok_MQ[0][-1]]
 
-        opt_nb_sup = int(reduce_nb_supp[index])
-
-        return(opt_nb_sup, max(reduce_MQ))
+        return(opt_nb_sup, opt_MQ)
 
     else:
-        exit("ERROR: The 'min_accepted_nb_nodes_in_results' parameter is too high (see config file)")
+        exit("ERROR: The 'min_size_consensus' parameter is too high (see config file)")
 
 
+def reassign(subject, obj, rel_name, main_results, unclassified, driver):
+    with driver.session() as session:
+        results = []
+
+        for ind in unclassified[:,0]:
+            ind_node = "(o1:" + subject + ":" + obj + "{id:'" + ind + "'})"
+            obj_node = "(o2:" + subject + ":" + obj + ")"
+            rel = "-[r:" + rel_name + "]-"
+            all_rels_querry = "MATCH " + ind_node + rel + obj_node + " RETURN o1.id, o2.id, r.nb_supports"
+            all_rels = session.run(all_rels_querry)
+            all_rels = [[record['o1.id'], record['o2.id'], record['r.nb_supports']] for record in all_rels]
+            all_rels = np.array(all_rels)
+
+            sum_clusts = []
+            clusters = np.unique(main_results[:,1])
+            for cluster in clusters:
+                members = main_results[np.where(main_results[:,1]==cluster),0]
+                members_rel = np.in1d(all_rels[:,1], members)
+                scores = all_rels[members_rel,2]
+                scores = [int(score) for score in scores]
+                if len(scores) > 0:
+                    sum_clusts.append(sum(scores)/len(scores))
+                else:
+                    sum_clusts.append(0)
+
+            reassign_clust = clusters[sum_clusts.index(max(sum_clusts))]
+            results.append([ind, reassign_clust])
+
+    return(np.array(results))

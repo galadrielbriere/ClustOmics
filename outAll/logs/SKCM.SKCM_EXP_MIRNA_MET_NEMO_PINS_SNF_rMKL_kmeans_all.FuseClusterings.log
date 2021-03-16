@@ -1,0 +1,36 @@
+Integrating clusterings from : SKCM
+On datatypes : ['expression', 'methylation', 'mirna']
+For methods : ['PINS', 'NEMO', 'SNF', 'rMKL', 'kmeans']
+Relationship type : SKCM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all
+Optimal number of supports is 8
+The graph will be clustered with Markov clustering using only IntegrationEdges with nb_supports >= 8
+345 nodes classified in 6 clusters after remooving too small clusters (min_accepted_nb_nodes_in_clusters set to 17 in the configuration file)
+Weighted Modularization Quality for the clustering is 0.34504858165196195
+23 unclassified nodes reassigned to consensus clusters
+[['TCGA.3N.A9WC.06' '1']
+ ['TCGA.D3.A1Q7.06' '6']
+ ['TCGA.D3.A2JF.06' '6']
+ ['TCGA.D3.A3CB.06' '6']
+ ['TCGA.D3.A8GJ.06' '6']
+ ['TCGA.EB.A44Q.06' '6']
+ ['TCGA.EE.A29P.06' '6']
+ ['TCGA.EE.A2A6.06' '1']
+ ['TCGA.ER.A19L.06' '1']
+ ['TCGA.ER.A19S.06' '6']
+ ['TCGA.ER.A3ET.06' '6']
+ ['TCGA.RP.A693.06' '2']
+ ['TCGA.D3.A1QB.06' '7']
+ ['TCGA.D3.A2J6.06' '7']
+ ['TCGA.D3.A2JL.06' '6']
+ ['TCGA.D3.A51K.06' '7']
+ ['TCGA.D9.A6E9.06' '7']
+ ['TCGA.EE.A29C.06' '7']
+ ['TCGA.FS.A4F4.06' '7']
+ ['TCGA.QB.A6FS.06' '7']
+ ['TCGA.D3.A8GI.06' '7']
+ ['TCGA.EE.A182.06' '7']
+ ['TCGA.FR.A3YO.06' '7']]
+Storing results into the graph
+Check the graph with the following Cypher query : 
+ MATCH (o:Patient:SKCM)-[r:FROM_MARKOVCLUST]-(c:OptimalNbSupports:SKCM:MarkovCluster:SKCM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all) RETURN o, r, c
+Clustering results stored in file : out/results/SKCM/SKCM.SKCM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all.ClustOmicsClustering

@@ -2,9 +2,11 @@
 neo4j_id: 'neo4j' # default
 neo4j_password: '4jneo'
 database: "bolt://localhost:7687"
-# To find the appropriate database address: from Neo4j standalone, start the database and via the "Manage" track, go to "Details", then check the IP adress and Bolt port
+# To find the appropriate database address: from Neo4j standalone,
+# start the database and via the "Manage" track, go to "Details",
+# then check the IP adress and Bolt port
 
-# Folder containing raw clustering results
+# Folder containing input clustering results
 clusterings_folder: "./data"
 
 # Specify the label to identify object nodes in the graph
@@ -12,135 +14,221 @@ object_nodes_name: 'Patient'
 # Specify the label to identify cluster nodes in the graph
 cluster_nodes_name: 'Cluster'
 
+# If False return only objects that pass all filters (i.e, not reassigned patients)
+# If True, but reassign_unclassified set to False, small clusters won't be removed from the final clustering
+## and patients that never reach high enough number of supports will be outputed in a cluster labelled 'unclassified'
+write_all: 'True'
+
+# If set to True, ClustOmics will try to assign filtered out objects to consensus clusters
+# Ignored if write_all is set to False
+reassign_unclassified: 'True'
+
 # For each Integration Edge, specify the datatypes to merge
   # RELATION_NAME: 'datatype1|datatype2|...|datatypeN'
 datatypes:
-  AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'expression|methylation|mirna'
+  # AML Multi-to-Multi
   AML_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'multiomics'
+  # AML Single-to-Multi OnlyMulti
+  AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 'expression|methylation|mirna'
+  # AML Single-to-Multi All
+  AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 'expression|methylation|mirna'
 
-  COAD_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'expression|methylation|mirna'
+  # COAD Multi-to-Multi
   COAD_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'multiomics'
+  # COAD Single-to-Multi OnlyMulti
+  COAD_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 'expression|methylation|mirna'
+  # COAD Single-to-Multi All
+  COAD_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 'expression|methylation|mirna'
 
-  BIC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'expression|methylation|mirna'
+  # BIC Multi-to-Multi
   BIC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'multiomics'
+  # BIC Single-to-Multi OnlyMulti
+  BIC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 'expression|methylation|mirna'
+  # BIC Single-to-Multi All
+  BIC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 'expression|methylation|mirna'
 
-  GBM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'expression|methylation|mirna'
+  # GBM Multi-to-Multi
   GBM_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'multiomics'
+  # GBM Single-to-Multi OnlyMulti
+  GBM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 'expression|methylation|mirna'
+  # GBM Single-to-Multi All
+  GBM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 'expression|methylation|mirna'
 
-  KIRC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'expression|methylation|mirna'
+  # KIRC Multi-to-Multi
   KIRC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'multiomics'
+  # KIRC Single-to-Multi OnlyMulti
+  KIRC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 'expression|methylation|mirna'
+  # KIRC Single-to-Multi All
+  KIRC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 'expression|methylation|mirna'
 
-  OV_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'expression|methylation|mirna'
+  # OV Multi-to-Multi
   OV_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'multiomics'
+  # OV Single-to-Multi OnlyMulti
+  OV_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 'expression|methylation|mirna'
+  # OV Single-to-Multi All
+  OV_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 'expression|methylation|mirna'
 
-  SARC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'expression|methylation|mirna'
+  # SARC Multi-to-Multi
   SARC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'multiomics'
+  # SARC Single-to-Multi OnlyMulti
+  SARC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 'expression|methylation|mirna'
+  # SARC Single-to-Multi All
+  SARC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 'expression|methylation|mirna'
 
-  LUSC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'expression|methylation|mirna'
+  # LUSC Multi-to-Multi
   LUSC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'multiomics'
+  # LUSC Single-to-Multi OnlyMulti
+  LUSC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 'expression|methylation|mirna'
+  # LUSC Single-to-Multi All
+  LUSC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 'expression|methylation|mirna'
 
-  LIHC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'expression|methylation|mirna'
+  # LIHC Multi-to-Multi
   LIHC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'multiomics'
+  # LIHC Single-to-Multi OnlyMulti
+  LIHC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 'expression|methylation|mirna'
+  # LIHC Single-to-Multi All
+  LIHC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 'expression|methylation|mirna'
 
-  SKCM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'expression|methylation|mirna'
+  # SARC Multi-to-Multi
+  SARC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'multiomics'
+  # SARC Single-to-Multi OnlyMulti
+  SARC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 'expression|methylation|mirna'
+  # SARC Single-to-Multi All
+  SARC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 'expression|methylation|mirna'
+
+  # SKCM Multi-to-Multi
   SKCM_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'multiomics'
+  # SKCM Single-to-Multi OnlyMulti
+  SKCM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 'expression|methylation|mirna'
+  # SKCM Single-to-Multi All
+  SKCM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 'expression|methylation|mirna'
 
 # For each Integration Edge, specify the methods to merge
 # RELATION_NAME: 'method1|method2|...|methodN'
 methods:
-  AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'PINS|NEMO|SNF|rMKL'
   AML_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'MCCA|PINS|NEMO|SNF|rMKL'
+  AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 'PINS|NEMO|SNF|rMKL|kmeans'
+  AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 'PINS|NEMO|SNF|rMKL|kmeans'
 
-  COAD_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'PINS|NEMO|SNF|rMKL'
   COAD_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'MCCA|PINS|NEMO|SNF|rMKL'
+  COAD_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 'PINS|NEMO|SNF|rMKL|kmeans'
+  COAD_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 'PINS|NEMO|SNF|rMKL|kmeans'
 
-  BIC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'PINS|NEMO|SNF|rMKL'
   BIC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'MCCA|PINS|NEMO|SNF|rMKL'
+  BIC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 'PINS|NEMO|SNF|rMKL|kmeans'
+  BIC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 'PINS|NEMO|SNF|rMKL|kmeans'
 
-  GBM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'PINS|NEMO|SNF|rMKL'
   GBM_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'MCCA|PINS|NEMO|SNF|rMKL'
+  GBM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 'PINS|NEMO|SNF|rMKL|kmeans'
+  GBM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 'PINS|NEMO|SNF|rMKL|kmeans'
 
-  KIRC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'PINS|NEMO|SNF|rMKL'
   KIRC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'MCCA|PINS|NEMO|SNF|rMKL'
+  KIRC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 'PINS|NEMO|SNF|rMKL|kmeans'
+  KIRC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 'PINS|NEMO|SNF|rMKL|kmeans'
 
-  OV_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'PINS|NEMO|SNF|rMKL'
   OV_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'MCCA|PINS|NEMO|SNF|rMKL'
+  OV_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 'PINS|NEMO|SNF|rMKL|kmeans'
+  OV_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 'PINS|NEMO|SNF|rMKL|kmeans'
 
-  SARC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'PINS|NEMO|SNF|rMKL'
   SARC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'MCCA|PINS|NEMO|SNF|rMKL'
+  SARC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 'PINS|NEMO|SNF|rMKL|kmeans'
+  SARC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 'PINS|NEMO|SNF|rMKL|kmeans'
 
-  LUSC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'PINS|NEMO|SNF|rMKL'
   LUSC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'MCCA|PINS|NEMO|SNF|rMKL'
+  LUSC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 'PINS|NEMO|SNF|rMKL|kmeans'
+  LUSC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 'PINS|NEMO|SNF|rMKL|kmeans'
 
-  LIHC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'PINS|NEMO|SNF|rMKL'
   LIHC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'MCCA|PINS|NEMO|SNF|rMKL'
+  LIHC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 'PINS|NEMO|SNF|rMKL|kmeans'
+  LIHC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 'PINS|NEMO|SNF|rMKL|kmeans'
 
-  SKCM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 'PINS|NEMO|SNF|rMKL'
   SKCM_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 'MCCA|PINS|NEMO|SNF|rMKL'
+  SKCM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 'PINS|NEMO|SNF|rMKL|kmeans'
+  SKCM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 'PINS|NEMO|SNF|rMKL|kmeans'
 
 # For each Integration Edge, specify the minimum allowed size for clusters
 # Clusters containing less than x nodes will be removed from the analysis
 # Must be a positive integer
 min_size_clust:
-  AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 8
   AML_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 8
+  AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 8
+  AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 8
 
-  BIC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 31
   BIC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 8
+  BIC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 8
+  BIC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 31
 
-  COAD_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 11
   COAD_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 8
+  COAD_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 8
+  COAD_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 11
 
-  GBM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 13
   GBM_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 8
+  GBM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 8
+  GBM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 13
 
-  KIRC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 9
   KIRC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 8
+  KIRC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 8
+  KIRC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 9
 
-  LIHC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 18
   LIHC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 8
+  LIHC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 8
+  LIHC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 18
 
-  LUSC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 17
   LUSC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 8
+  LUSC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 8
+  LUSC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 17
 
-  OV_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 14
   OV_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 8
+  OV_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 8
+  OV_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 14
 
-  SARC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 12
   SARC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 8
+  SARC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 8
+  SARC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 12
 
-  SKCM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 17
   SKCM_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 8
+  SKCM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 8
+  SKCM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 17
 
 # For each Integration Edge, specify the minimum number of objects to be returned
 # This parameters is only used when the number of supports to use to filter the graph is not specified
 min_size_consensus:
-  AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 161
   AML_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 161
+  AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 161
+  AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 161
 
-  BIC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 589
   BIC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 589
+  BIC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 589
+  BIC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 589
 
-  COAD_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 209
   COAD_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 209
+  COAD_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 209
+  COAD_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 209
 
-  GBM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 260
   GBM_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 260
+  GBM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 260
+  GBM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 260
 
-  KIRC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 173
   KIRC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 173
+  KIRC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 173
+  KIRC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 173
 
-  LIHC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 348
   LIHC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 348
+  LIHC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 348
+  LIHC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 348
 
-  LUSC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 323
   LUSC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 323
+  LUSC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 323
+  LUSC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 323
 
-  OV_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 272
   OV_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 272
+  OV_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 272
+  OV_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 272
 
-  SARC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 244
   SARC_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 244
+  SARC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 244
+  SARC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 244
 
-  SKCM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL: 333
   SKCM_MULTI_MCCA_NEMO_PINS_SNF_rMKL: 333
+  SKCM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans: 333
+  SKCM_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all: 333

@@ -58,21 +58,19 @@ check_enrichment <- function(clust_path, clin_path, cancer) {
       next
     }
     
-    is_discrete_param <- clinical_metadata[clinical_param] == 'DISCRETE' #boolean
+    is_discrete_param <- clinical_metadata[clinical_param] == 'DISCRETE' 
     is_numeric_param <- clinical_metadata[clinical_param] == 'NUMERIC'
     stopifnot(is_discrete_param | is_numeric_param)
     
     df = clin[,c(clinical_param, "cluster")]
     
     if (clinical_param == "pahtologic_M") {
-      #df = clin[,c("pathologic_M", "cluster")] 
       df$pathologic_M = gsub("a", "", df$pathologic_M)
       df$pathologic_M = gsub("b", "", df$pathologic_M)
       df$pathologic_M = gsub("c", "", df$pathologic_M)
       df$pathologic_M = gsub(" \\(i\\+\\)", "", df$pathologic_M)
       df[which(!df$pathologic_M %in% c("MX", "M0", "M1")),1] = NA
     } else if (clinical_param == "pahtologic_T") {
-      #df = clin[,c("pathologic_T", "cluster")]
       df[which(df$pathologic_T == "[Discrepancy]"),1] = NA
       df$pathologic_T = gsub("a", "", df$pathologic_T)
       df$pathologic_T = gsub("b", "", df$pathologic_T)
@@ -80,7 +78,6 @@ check_enrichment <- function(clust_path, clin_path, cancer) {
       df$pathologic_T = gsub("d", "", df$pathologic_T)
       df[which(!df$pathologic_T %in% c("TX", "T0", "T1", "T2", "T3", "T4", "Tis")),1] = NA
     } else if (clinical_param == "pathologic_N") {
-      #df = clin[,c("pathologic_N", "cluster")] 
       df$pathologic_N = gsub("a", "", df$pathologic_N)
       df$pathologic_N = gsub("b", "", df$pathologic_N)
       df$pathologic_N = gsub("c", "", df$pathologic_N)
@@ -90,26 +87,19 @@ check_enrichment <- function(clust_path, clin_path, cancer) {
       df$pathologic_N = gsub(" \\(mol\\+\\)", "", df$pathologic_N)
       df[which(!df$pathologic_N %in% c("NX", "N1", "N2", "N3", "N0")),1] = NA
     } else if (clinical_param == "pathologic_stage") {
-      #df = clin[,c("pathologic_stage", "cluster")]
       df[which(df$pathologic_stage == "[Discrepancy]"),1] = NA
       df$pathologic_stage = gsub("A", "", df$pathologic_stage)
       df$pathologic_stage = gsub("B", "", df$pathologic_stage)
       df$pathologic_stage = gsub("C", "", df$pathologic_stage)
       df[which(!df$pathologic_stage %in% c("Stage X", "Stage 0", "Stage I", "Stage II", "Stage III", "Stage IV")),1] = NA
     } else if (clinical_param == "histological_type") { ## TROP VARIABLE
-      #df = clin[,c("histological_type", "cluster")]
       df[which(df$histological_type == "[Discrepancy]"),1] = NA
       df[which(df$histological_type == "Other, specify"),1] = NA
       df[which(df$histological_type == "Mixed Histology (please specify)"),1] = NA
-      # if (length(unique(df$histological_type)) > 10) {
-      #   next
-      # }
     } else if (clinical_param == "new_neoplasm_event_type") {
-      #df = clin[,c("new_neoplasm_event_type", "cluster")]
       df[which(!is.na(df$new_neoplasm_event_type)),1] = "Yes"
       df[which(is.na(df$new_neoplasm_event_type)),1] = "None"
     } else if (clinical_param == "neoplasm_histologic_grade") {
-      #df = clin[,c("neoplasm_histologic_grade", "cluster")]
       df[which(!df$neoplasm_histologic_grade %in% c("GX", "G1", "G2", "G3", "G4")),1] = NA
     } else if (clinical_param == "tobacco_smoking_history") {
       df[which(df$tobacco_smoking_history == "[Discrepancy]"),1] = NA

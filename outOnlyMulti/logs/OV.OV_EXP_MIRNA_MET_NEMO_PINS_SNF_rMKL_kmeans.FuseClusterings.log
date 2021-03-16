@@ -1,0 +1,19 @@
+Integrating clusterings from : OV
+On datatypes : ['expression', 'methylation', 'mirna']
+For methods : ['PINS', 'NEMO', 'SNF', 'rMKL', 'kmeans']
+Relationship type : OV_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans
+Optimal number of supports is 10
+The graph will be clustered with Markov clustering using only IntegrationEdges with nb_supports >= 10
+281 nodes classified in 6 clusters after remooving too small clusters (min_accepted_nb_nodes_in_clusters set to 8 in the configuration file)
+Weighted Modularization Quality for the clustering is 0.3356021907003057
+6 unclassified nodes reassigned to consensus clusters
+[['TCGA.09.2056.01' '1']
+ ['TCGA.04.1357.01' '1']
+ ['TCGA.24.2023.01' '1']
+ ['TCGA.59.2351.01' '1']
+ ['TCGA.24.1616.01' '4']
+ ['TCGA.13.0799.01' '6']]
+Storing results into the graph
+Check the graph with the following Cypher query : 
+ MATCH (o:Patient:OV)-[r:FROM_MARKOVCLUST]-(c:OptimalNbSupports:OV:MarkovCluster:OV_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans) RETURN o, r, c
+Clustering results stored in file : out/results/OV/OV.OV_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans.ClustOmicsClustering

@@ -1,0 +1,5 @@
+gender	0.16
+age_at_initial_pathologic_diagnosis	0.402
+histological_type	0.635
+new_neoplasm_event_type	0.628
+prior_glioma	0.16

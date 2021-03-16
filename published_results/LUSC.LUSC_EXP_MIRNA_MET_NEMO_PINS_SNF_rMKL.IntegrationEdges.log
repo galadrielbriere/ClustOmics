@@ -1,9 +1,0 @@
-
-Integrating clusterings from : LUSC
-
-On datatypes : ['expression', 'methylation', 'mirna']
-
-For methods : ['PINS', 'NEMO', 'SNF', 'rMKL']
-
-Relationship type : LUSC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL
-Building the integration graph. Integration Edges will be named "LUSC_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL".

@@ -1,0 +1,63 @@
+Loading results from COAD in ./data 
+
+Initiating graph from COAD_metadata.txt metadata.
+Loading ./data/COAD/COAD_expression_NEMO.clst clustering results.
+- computed on datatype : expression
+- computed with method : NEMO
+Loading ./data/COAD/COAD_mirna_rMKL.clst clustering results.
+- computed on datatype : mirna
+- computed with method : rMKL
+Loading ./data/COAD/COAD_mirna_NEMO.clst clustering results.
+- computed on datatype : mirna
+- computed with method : NEMO
+Loading ./data/COAD/COAD_methylation_kmeans.clst clustering results.
+- computed on datatype : methylation
+- computed with method : kmeans
+Loading ./data/COAD/COAD_multiomics_NEMO.clst clustering results.
+- computed on datatype : multiomics
+- computed with method : NEMO
+Loading ./data/COAD/COAD_expression_rMKL.clst clustering results.
+- computed on datatype : expression
+- computed with method : rMKL
+Loading ./data/COAD/COAD_multiomics_SNF.clst clustering results.
+- computed on datatype : multiomics
+- computed with method : SNF
+Loading ./data/COAD/COAD_expression_PINS.clst clustering results.
+- computed on datatype : expression
+- computed with method : PINS
+Loading ./data/COAD/COAD_multiomics_PINS.clst clustering results.
+- computed on datatype : multiomics
+- computed with method : PINS
+Loading ./data/COAD/COAD_methylation_SNF.clst clustering results.
+- computed on datatype : methylation
+- computed with method : SNF
+Loading ./data/COAD/COAD_multiomics_rMKL.clst clustering results.
+- computed on datatype : multiomics
+- computed with method : rMKL
+Loading ./data/COAD/COAD_methylation_PINS.clst clustering results.
+- computed on datatype : methylation
+- computed with method : PINS
+Loading ./data/COAD/COAD_expression_SNF.clst clustering results.
+- computed on datatype : expression
+- computed with method : SNF
+Loading ./data/COAD/COAD_mirna_PINS.clst clustering results.
+- computed on datatype : mirna
+- computed with method : PINS
+Loading ./data/COAD/COAD_methylation_rMKL.clst clustering results.
+- computed on datatype : methylation
+- computed with method : rMKL
+Loading ./data/COAD/COAD_mirna_kmeans.clst clustering results.
+- computed on datatype : mirna
+- computed with method : kmeans
+Loading ./data/COAD/COAD_expression_kmeans.clst clustering results.
+- computed on datatype : expression
+- computed with method : kmeans
+Loading ./data/COAD/COAD_methylation_NEMO.clst clustering results.
+- computed on datatype : methylation
+- computed with method : NEMO
+Loading ./data/COAD/COAD_multiomics_MCCA.clst clustering results.
+- computed on datatype : multiomics
+- computed with method : MCCA
+Loading ./data/COAD/COAD_mirna_SNF.clst clustering results.
+- computed on datatype : mirna
+- computed with method : SNF

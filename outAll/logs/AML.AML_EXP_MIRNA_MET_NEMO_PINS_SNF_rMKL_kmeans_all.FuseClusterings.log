@@ -1,0 +1,34 @@
+Integrating clusterings from : AML
+On datatypes : ['expression', 'methylation', 'mirna']
+For methods : ['PINS', 'NEMO', 'SNF', 'rMKL', 'kmeans']
+Relationship type : AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all
+Optimal number of supports is 8
+The graph will be clustered with Markov clustering using only IntegrationEdges with nb_supports >= 8
+176 nodes classified in 7 clusters after remooving too small clusters (min_accepted_nb_nodes_in_clusters set to 8 in the configuration file)
+Weighted Modularization Quality for the clustering is 0.5095859672867947
+21 unclassified nodes reassigned to consensus clusters
+[['TCGA.AB.2805.03' '5']
+ ['TCGA.AB.2834.03' '6']
+ ['TCGA.AB.2866.03' '5']
+ ['TCGA.AB.2911.03' '5']
+ ['TCGA.AB.2912.03' '6']
+ ['TCGA.AB.2923.03' '3']
+ ['TCGA.AB.2878.03' '4']
+ ['TCGA.AB.2824.03' '4']
+ ['TCGA.AB.2972.03' '3']
+ ['TCGA.AB.2804.03' '8']
+ ['TCGA.AB.2809.03' '2']
+ ['TCGA.AB.2827.03' '2']
+ ['TCGA.AB.2829.03' '4']
+ ['TCGA.AB.2831.03' '4']
+ ['TCGA.AB.2859.03' '3']
+ ['TCGA.AB.2865.03' '4']
+ ['TCGA.AB.2906.03' '8']
+ ['TCGA.AB.2907.03' '4']
+ ['TCGA.AB.2957.03' '6']
+ ['TCGA.AB.2968.03' '4']
+ ['TCGA.AB.2974.03' '2']]
+Storing results into the graph
+Check the graph with the following Cypher query : 
+ MATCH (o:Patient:AML)-[r:FROM_MARKOVCLUST]-(c:OptimalNbSupports:AML:MarkovCluster:AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all) RETURN o, r, c
+Clustering results stored in file : out/results/AML/AML.AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all.ClustOmicsClustering

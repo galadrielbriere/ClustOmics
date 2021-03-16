@@ -1,0 +1,63 @@
+Loading results from LIHC in ./data 
+
+Initiating graph from LIHC_metadata.txt metadata.
+Loading ./data/LIHC/LIHC_multiomics_rMKL.clst clustering results.
+- computed on datatype : multiomics
+- computed with method : rMKL
+Loading ./data/LIHC/LIHC_mirna_kmeans.clst clustering results.
+- computed on datatype : mirna
+- computed with method : kmeans
+Loading ./data/LIHC/LIHC_methylation_rMKL.clst clustering results.
+- computed on datatype : methylation
+- computed with method : rMKL
+Loading ./data/LIHC/LIHC_expression_kmeans.clst clustering results.
+- computed on datatype : expression
+- computed with method : kmeans
+Loading ./data/LIHC/LIHC_mirna_PINS.clst clustering results.
+- computed on datatype : mirna
+- computed with method : PINS
+Loading ./data/LIHC/LIHC_methylation_NEMO.clst clustering results.
+- computed on datatype : methylation
+- computed with method : NEMO
+Loading ./data/LIHC/LIHC_mirna_NEMO.clst clustering results.
+- computed on datatype : mirna
+- computed with method : NEMO
+Loading ./data/LIHC/LIHC_methylation_SNF.clst clustering results.
+- computed on datatype : methylation
+- computed with method : SNF
+Loading ./data/LIHC/LIHC_multiomics_MCCA.clst clustering results.
+- computed on datatype : multiomics
+- computed with method : MCCA
+Loading ./data/LIHC/LIHC_expression_SNF.clst clustering results.
+- computed on datatype : expression
+- computed with method : SNF
+Loading ./data/LIHC/LIHC_methylation_PINS.clst clustering results.
+- computed on datatype : methylation
+- computed with method : PINS
+Loading ./data/LIHC/LIHC_mirna_SNF.clst clustering results.
+- computed on datatype : mirna
+- computed with method : SNF
+Loading ./data/LIHC/LIHC_multiomics_SNF.clst clustering results.
+- computed on datatype : multiomics
+- computed with method : SNF
+Loading ./data/LIHC/LIHC_expression_NEMO.clst clustering results.
+- computed on datatype : expression
+- computed with method : NEMO
+Loading ./data/LIHC/LIHC_mirna_rMKL.clst clustering results.
+- computed on datatype : mirna
+- computed with method : rMKL
+Loading ./data/LIHC/LIHC_expression_PINS.clst clustering results.
+- computed on datatype : expression
+- computed with method : PINS
+Loading ./data/LIHC/LIHC_methylation_kmeans.clst clustering results.
+- computed on datatype : methylation
+- computed with method : kmeans
+Loading ./data/LIHC/LIHC_expression_rMKL.clst clustering results.
+- computed on datatype : expression
+- computed with method : rMKL
+Loading ./data/LIHC/LIHC_multiomics_PINS.clst clustering results.
+- computed on datatype : multiomics
+- computed with method : PINS
+Loading ./data/LIHC/LIHC_multiomics_NEMO.clst clustering results.
+- computed on datatype : multiomics
+- computed with method : NEMO

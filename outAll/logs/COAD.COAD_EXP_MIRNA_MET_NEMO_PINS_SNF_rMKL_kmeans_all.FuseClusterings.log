@@ -1,0 +1,40 @@
+Integrating clusterings from : COAD
+On datatypes : ['expression', 'methylation', 'mirna']
+For methods : ['PINS', 'NEMO', 'SNF', 'rMKL', 'kmeans']
+Relationship type : COAD_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all
+Optimal number of supports is 7
+The graph will be clustered with Markov clustering using only IntegrationEdges with nb_supports >= 7
+276 nodes classified in 6 clusters after remooving too small clusters (min_accepted_nb_nodes_in_clusters set to 11 in the configuration file)
+Weighted Modularization Quality for the clustering is 0.4078146820610556
+27 unclassified nodes reassigned to consensus clusters
+[['TCGA.5M.AAT6.01' '4']
+ ['TCGA.A6.2671.01' '1']
+ ['TCGA.A6.2677.01' '2']
+ ['TCGA.A6.2679.01' '2']
+ ['TCGA.A6.2680.01' '2']
+ ['TCGA.A6.2681.01' '2']
+ ['TCGA.A6.3809.01' '4']
+ ['TCGA.A6.3810.01' '3']
+ ['TCGA.A6.4107.01' '4']
+ ['TCGA.AA.3488.01' '1']
+ ['TCGA.AA.3494.01' '3']
+ ['TCGA.AA.3510.01' '1']
+ ['TCGA.AA.3526.01' '3']
+ ['TCGA.AA.3675.01' '2']
+ ['TCGA.AA.3685.01' '3']
+ ['TCGA.AA.A01P.01' '6']
+ ['TCGA.AA.A01X.01' '3']
+ ['TCGA.AA.A01Z.01' '3']
+ ['TCGA.AA.A02K.01' '3']
+ ['TCGA.AA.A02Y.01' '1']
+ ['TCGA.AZ.4308.01' '3']
+ ['TCGA.AZ.4681.01' '3']
+ ['TCGA.CM.4746.01' '1']
+ ['TCGA.CM.4748.01' '5']
+ ['TCGA.CM.4750.01' '2']
+ ['TCGA.CM.4752.01' '3']
+ ['TCGA.CM.5341.01' '2']]
+Storing results into the graph
+Check the graph with the following Cypher query : 
+ MATCH (o:Patient:COAD)-[r:FROM_MARKOVCLUST]-(c:OptimalNbSupports:COAD:MarkovCluster:COAD_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all) RETURN o, r, c
+Clustering results stored in file : out/results/COAD/COAD.COAD_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all.ClustOmicsClustering

@@ -138,7 +138,7 @@ nb_sup_markov_line = mlines.Line2D([], [], color='b', linestyle="--", label='Opt
 
 legend = plt.legend(handles=[magenta_line, cyan_line, magenta_line2, cyan_line2, threshold_line, nb_sup_louvain_line, nb_sup_markov_line], loc='center left', bbox_to_anchor=(0., 0.5, 0., -1.7),
            ncol=1, fancybox=True)
-plt.title('Modularization Quality according to the nb_supports threshold \n (' + subject + ' cancer)')
+plt.title('Modularization Quality according to the nb_supports threshold \n (' + subject + ')')
 plt.savefig(out, bbox_inches='tight')
 plt.close()
 

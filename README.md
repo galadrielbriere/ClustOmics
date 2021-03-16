@@ -109,6 +109,11 @@ we recommend choosing the appropriate number of supports threshold by ploting wM
 ```
 	snakemake out/plots/{subject}/wMQ_{subject}.{rel_name}.svg --cores 1
 ```
+
+This results in, for instance:
+
+![alt tag](https://raw.githubusercontent.com/galadrielbriere/ClustOmics/bf89187112d0ff7662e27623ae8ae4d6ef39bcae/outAll/plots/AML/wMQ_AML.AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all.svg)
+
 After selecting the number of supports threshold to use, run:
 ```
 	snakemake out/{subject}.{rel_name}.FuseClusterings.{nb_supports}_supports.log --cores 1

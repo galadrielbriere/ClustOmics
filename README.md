@@ -16,8 +16,8 @@ From the standalone application, create a local database through "Add database":
 To run analysis on generated consensus clusterings (Survival analysis, Clinical label enrichment, ...):
 
 ```
-	conda install r-essentials r-base r-survival r-optparse r-survminer r-FactoMineR r-pca3d r-devtools
-	conda install -c bioconda bioconductor-genefilter  bioconductor-affy
+	conda install r-essentials r-base r-survival r-optparse r-survminer r-FactoMineR r-devtools
+	conda install -c bioconda bioconductor-genefilter bioconductor-affy bioconductor-clusterprofiler
 	Rscript -e "devtools::install_github('Shamir-Lab/Logrank-Inaccuracies/logrankHeinze')"
 ```
 

@@ -99,7 +99,7 @@ Or:
 
 For instance, to compute consensus clustering for AML SingleToMulti:
 ```
-	mv dataAll data
+	mv dataAll data #or change clusterings_folder parameter to 'dataAll' in the Snakemake configuration file
 	snakemake out/AML.AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_all.FuseClusterings.log --cores 1
 ```
 

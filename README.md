@@ -29,7 +29,7 @@ SingleToMulti scenario for AML cancer type:
 	cd ClustOmics
 	conda activate ClustOmics
 	mv dataAll data #or change clusterings_folder parameter to 'dataAll' in the Snakemake configuration file config.yaml
-	snakemake out/AML.AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all.all.log --cores 1
+	snakemake out/AML.AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all.FuseClusterings.log --cores 1
 	mv data dataAll
 ```
 MultiToMulti scenario for COAD cancer type:
@@ -37,7 +37,7 @@ MultiToMulti scenario for COAD cancer type:
 	cd ClustOmics
 	conda activate ClustOmics
 	mv dataOnlyMulti data #or change clusterings_folder parameter to 'dataOnlyMulti' in the Snakemake configuration file config.yaml
-	snakemake out/COAD.COAD_MULTI_MCCA_NEMO_PINS_SNF_rMKL.all.log --cores 1
+	snakemake out/COAD.COAD_MULTI_MCCA_NEMO_PINS_SNF_rMKL.FuseClusterings.log --cores 1
 	mv data dataOnlyMulti
 ```
 

@@ -3,27 +3,14 @@
 1) Download and install Neo4j from https://neo4j.com/.
 From the standalone application, create a new project, and a local database  in the project through "Add - Add Local DBMS": set the database name, a password, and the Neo4j version of the database (version tested: 4.0.6). By default, the username to connect to the database is "neo4j". Once the database created, click on it, go to "Plugins", and install "APOC" and "Graph Data Science" Neo4j libraries. Start the database.
 
-2) Install Conda (https://docs.conda.io/projects/conda/en/latest/index.html). Create conda environment for ClustOmics:
+2) Install Conda (https://docs.conda.io/projects/conda/en/latest/index.html). Create conda environment for ClustOmics from ClustOmicsCondaEnv.yml:
 
 ```
-	conda create -n ClustOmics python=3.6
+	git clone https://github.com/galadrielbriere/ClustOmics.git
+	cd ClustOmics
+	conda env create -f ClustOmicsCondaEnv.yml
 	conda activate ClustOmics
-	conda install -c bioconda snakemake
- 	conda install -c conda-forge neo4j-python-driver
-	conda install numpy networkx matplotlib
-```
-
-To run analysis on generated consensus clusterings (Survival analysis, Clinical label enrichment, ...):
-
-```
-	conda install -c conda-forge r-essentials r-base r-survival r-optparse r-devtools r-survminer r-factominer
-	conda install -c bioconda bioconductor-genefilter bioconductor-affy bioconductor-clusterprofiler
 	Rscript -e "devtools::install_github('Shamir-Lab/Logrank-Inaccuracies/logrankHeinze')"
-```
-
-3) Install Markov Clustering from: https://github.com/GuyAllard/markov_clustering
-```
-	python -m pip install markov_clustering
 ```
 
 # Run ClustOmics

@@ -1,7 +1,14 @@
 # Installation
 
-1) Download and install Neo4j from https://neo4j.com/.
-From the standalone application, create a new project, and a local database  in the project through "Add - Add Local DBMS": set the database name, a password, and the Neo4j version of the database (version tested: 4.0.6). By default, the username to connect to the database is "neo4j". Once the database created, click on it, go to "Plugins", and install "APOC" and "Graph Data Science" Neo4j libraries. Start the database.
+1) Download and install Neo4j Desktop from https://neo4j.com/.
+From the application, create a new project, and a local database  in the project through "Add - Add Local DBMS": set the database name, a password, and the Neo4j version of the database (version tested: 4.0.6). By default, the username to connect to the database is "neo4j". Once the database created, click on it, go to "Plugins", and install "APOC" and "Graph Data Science" Neo4j libraries. 
+Open the database settings file ("..." track) and check if the following line is commented, if not, comment it.
+```
+#dbms.connector.bolt.listen_address=:7687
+```
+
+Start the database. Update the "neo4j_password" field in the Snakemake configuration file <i>config.yaml</i> according to the password you chose for the database.
+
 
 2) Install Conda (https://docs.conda.io/projects/conda/en/latest/index.html). Create conda environment for ClustOmics from ClustOmicsCondaEnv.yml:
 
@@ -15,6 +22,24 @@ From the standalone application, create a new project, and a local database  in 
 
 # Run ClustOmics
 ClustOmics uses **Snakemake** for a quick and easy execution. See https://snakemake.readthedocs.io/en/stable/ to get started with Snakemake.
+
+## TLDR
+SingleToMulti scenario for AML cancer type:
+```
+	cd ClustOmics
+	conda activate ClustOmics
+	mv dataAll data #or change clusterings_folder parameter to 'dataAll' in the Snakemake configuration file config.yaml
+	snakemake out/AML.AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all.all.log --cores 1
+	mv data dataAll
+```
+MultiToMulti scenario for COAD cancer type:
+```
+	cd ClustOmics
+	conda activate ClustOmics
+	mv dataOnlyMulti data #or change clusterings_folder parameter to 'dataOnlyMulti' in the Snakemake configuration file config.yaml
+	snakemake out/COAD.COAD_MULTI_MCCA_NEMO_PINS_SNF_rMKL.all.log --cores 1
+	mv data dataOnlyMulti
+```
 
 ## 1) Data folder organisation
 The _./data_ folder contains directories for each study case. For instance, a specific folder is created for each cancer type analysed. Input clusterings and metadata file are sored in <i>./data/<subject></i>. For instance, all input data for AML cancer type are stored in <i>./data/AML</i>.
@@ -106,6 +131,11 @@ After selecting the number of supports threshold to use, run:
 	snakemake out/{subject}.{rel_name}.FuseClusterings.{nb_supports}_supports.log --cores 1
 ```
 
+For instance, on AML SingleToMulti with number of supports treshold of 10:
+```
+	snakemake out/AML.AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all.FuseClusterings.10_supports.log  --cores 1
+```
+
 To run all analysis (including Survival analysis, clinical label enrichment, ...):
 ```
 	snakemake out/{subject}.{rel_name}.all.log --cores 1
@@ -139,4 +169,18 @@ For latest command to work, you need to download raw datasets here: http://acgt.
 
 ```
 
-We don't recommend using multiple cores (defined by the --cores parameter).
+We don't recommend using multiple cores (defined by the --cores parameter), unless when running Snakemake rules AllSurvClinMulti, AllSurvClinSingle or AllSurvClin, for which we recommend using as many cores as possible.
+
+## 4) Visualize results in Neo4j browser
+From Neo4j Desktop, open the database with Neo4j browser (or enter 'http://localhost:7474/browser/' in your web browser).
+From the "Settings" track, bottom left, uncheck "Connect results nodes".
+By clicking on the "Database" icon, top left, you can access all node types and relationship types stored in the database. By clicking on each node type of relation type, you can visualize a subset of the corresponding objects.
+You can also use the Cypher command box to enter your own visualization queries, using Cypher language.
+When running ClustOmics, consensus clustering is created in rule FuseClusterings. At the end of this rule, ClustOmics gives you the Cypher query you need to visualize consensus results (directly on your terminal, or in the rule log file).
+For instance:
+```
+Check the graph with the following Cypher query : 
+ MATCH (o:Patient:AML)-[r:FROM_MARKOVCLUST]-(c:OptimalNbSupports:AML:MarkovCluster:AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all) RETURN o, r, c
+```
+When visualizing the result of this query, you can choose to color nodes or relationship according to labels of interest. Juste click on the label or relationship you want to highlight (on the panel just above the graph), and select the color you want to display (on the pannel just under the graph).
+

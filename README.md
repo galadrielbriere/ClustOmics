@@ -1,12 +1,12 @@
 # Installation
 
 1) Download and install Neo4j from https://neo4j.com/.
-From the standalone application, create a local database through "Add database": set the database name, a password, and the Neo4j version of the database (version tested: 4.0.6). By default, the username to connect to the database is "neo4j". Once the database created, from the "Manage" track, go to "Plugins", and install "APOC" and "Graph Data Science" Neo4j libraries. Start the database.
+From the standalone application, create a new project, and a local database  in the project through "Add - Add Local DBMS": set the database name, a password, and the Neo4j version of the database (version tested: 4.0.6). By default, the username to connect to the database is "neo4j". Once the database created, click on it, go to "Plugins", and install "APOC" and "Graph Data Science" Neo4j libraries. Start the database.
 
-2) Create conda environment for ClustOmics:
+2) Install Conda (https://docs.conda.io/projects/conda/en/latest/index.html). Create conda environment for ClustOmics:
 
 ```
-	conda create -n ClustOmics python=3.8
+	conda create -n ClustOmics python=3.6
 	conda activate ClustOmics
 	conda install -c bioconda snakemake
  	conda install -c conda-forge neo4j-python-driver
@@ -16,8 +16,8 @@ From the standalone application, create a local database through "Add database":
 To run analysis on generated consensus clusterings (Survival analysis, Clinical label enrichment, ...):
 
 ```
-	conda install r-essentials r-base r-survival r-optparse r-survminer r-FactoMineR r-pca3d r-devtools
-	conda install -c bioconda bioconductor-genefilter  bioconductor-affy
+	conda install -c conda-forge r-essentials r-base r-survival r-optparse r-devtools r-survminer r-factominer
+	conda install -c bioconda bioconductor-genefilter bioconductor-affy bioconductor-clusterprofiler
 	Rscript -e "devtools::install_github('Shamir-Lab/Logrank-Inaccuracies/logrankHeinze')"
 ```
 
@@ -99,8 +99,8 @@ Or:
 
 For instance, to compute consensus clustering for AML SingleToMulti:
 ```
-	mv dataAll data
-	snakemake out/AML.AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_all.FuseClusterings.log --cores 1
+	mv dataAll data #or change clusterings_folder parameter to 'dataAll' in the Snakemake configuration file
+	snakemake out/AML.AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all.FuseClusterings.log --cores 1
 ```
 
 To run ClustOmics with a user-defined number of supports (/!\ parameter min_size_consensus will be ignored),

@@ -13,7 +13,7 @@ REASSIGN = config['reassign_unclassified']
 rule All:
     input:
         clust="out/{subject}.{rel_name}.FuseClusterings.log",
-        MQ_plot="out/plots/{subject}/MQ_{subject}.{rel_name}.svg",
+        MQ_plot="out/plots/{subject}/wMQ_{subject}.{rel_name}.svg",
         survival="out/survival/{subject}/{subject}.{rel_name}.ClustOmicsClustering.pval",
         clinical="out/clinical/{subject}/{subject}.{rel_name}.ClustOmicsClustering.pval"
     output:

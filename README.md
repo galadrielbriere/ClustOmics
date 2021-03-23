@@ -189,14 +189,19 @@ We don't recommend using multiple cores (defined by the --cores parameter), unle
 
 ## 4) Visualize results in Neo4j browser
 From Neo4j Desktop, open the database with Neo4j browser (or enter 'http://localhost:7474/browser/' in your web browser).
+
 From the "Settings" track, bottom left, uncheck "Connect results nodes".
-By clicking on the "Database" icon, top left, you can access all node types and relationship types stored in the database. By clicking on each node type of relation type, you can visualize a subset of the corresponding objects.
+
+By clicking on the "Database" icon, top left, you can access all node types and relationship types stored in the database. By clicking on each node type or relationship type, you can visualize a subset of the corresponding objects.
+
 You can also use the Cypher command box to enter your own visualization queries, using Cypher language.
+
 When running ClustOmics, consensus clustering is created in rule FuseClusterings. At the end of this rule, ClustOmics gives you the Cypher query you need to visualize consensus results (directly on your terminal, or in the rule log file).
+
 For instance:
 ```
 Check the graph with the following Cypher query : 
  MATCH (o:Patient:AML)-[r:FROM_MARKOVCLUST]-(c:OptimalNbSupports:AML:MarkovCluster:AML_EXP_MIRNA_MET_NEMO_PINS_SNF_rMKL_kmeans_all) RETURN o, r, c
 ```
-When visualizing the result of this query, you can choose to color nodes or relationship according to labels of interest. Juste click on the label or relationship you want to highlight (on the panel just above the graph), and select the color you want to display (on the pannel just under the graph).
+When visualizing the result of this query, you can choose to color nodes or relationship according to labels of interest. Just click on the label or relationship you want to highlight (on the panel just above the graph), and select the color you want to display (on the pannel just under the graph).
 

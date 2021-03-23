@@ -22,6 +22,19 @@ Create conda environment for ClustOmics from ClustOmicsCondaEnv.yml:
 	python -m pip install markov_clustering
 	Rscript -e "devtools::install_github('Shamir-Lab/Logrank-Inaccuracies/logrankHeinze')"
 ```
+Or install it "by hand":
+```
+	git clone https://github.com/galadrielbriere/ClustOmics.git
+	cd ClustOmics
+	conda create -n ClustOmics python=3.6
+ 	conda activate ClustOmics
+	conda install -c bioconda snakemake
+	conda install numpy networkx matplotlib
+	conda install -c conda-forge neo4j-python-driver
+	conda install r-essentials r-devtools r-optparse r-survminer
+ 	python -m pip install markov_clustering
+ 	Rscript -e "devtools::install_github('Shamir-Lab/Logrank-Inaccuracies/logrankHeinze')"
+```
 
 # Run ClustOmics
 ClustOmics uses **Snakemake** for a quick and easy execution. See https://snakemake.readthedocs.io/en/stable/ to get started with Snakemake.

@@ -205,3 +205,9 @@ Check the graph with the following Cypher query :
 ```
 When visualizing the result of this query, you can choose to color nodes or relationship according to labels of interest. Just click on the label or relationship you want to highlight (on the panel just above the graph), and select the color you want to display (on the pannel just under the graph).
 
+## Troubleshooting
+If you get the following error:
+```
+neo4j.exceptions.DatabaseError: {code: Neo.DatabaseError.Statement.ExecutionFailed} {message: Java heap space}
+```
+Go to the database settings and increase memory size parameter ``` dbms.memory.heap.max_size```

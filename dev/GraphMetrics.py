@@ -28,6 +28,17 @@ def call_louvain_algo(subject, obj, clust, rel_name, nb_supports, driver):
         relations = 'MATCH ' + obj1_nodes + '-[r:' + rel_name + ']->' + obj2_nodes + \
         ' WHERE r.nb_supports >= ' + str(nb_supports) + ' RETURN id(o1) as source, id(o2) as target, r.nb_supports as weight'
 
+        get_integration_graph = "MATCH " + obj1_nodes + "-[r:" + rel_name + "]->" + obj2_nodes + \
+            "WHERE r.nb_supports >= " + str(nb_supports) + " RETURN o1.id, r.nb_supports, o2.id"
+        int_graph = session.run(get_integration_graph)
+        int_graph = [(record['o1.id'], record['o2.id'], {"weight": record['r.nb_supports']}) for record in int_graph]
+
+        G = nx.DiGraph()
+        G.add_edges_from(int_graph)
+        
+        if (G.number_of_edges()==0):
+            return(0)
+        
         make_graph_cat = "CALL gds.graph.create.cypher('" + cat_graph_name +\
             "', '" + objects + "', '" + relations + "')"
         session.run(make_graph_cat)
@@ -57,6 +68,10 @@ def call_markov_algo(subject, obj, clust, rel_name, nb_supports, driver):
 
     G = nx.DiGraph()
     G.add_edges_from(int_graph)
+    
+    if (G.number_of_edges()==0):
+        return(0)
+    
     matrix = nx.to_scipy_sparse_matrix(G, weight = "weight")
 
     result = mc.run_mcl(matrix)           # run MCL with default parameters
@@ -98,6 +113,9 @@ def get_main_results(subject, obj, clust, rel_name, clust_algo, nb_nodes_clust, 
     elif clust_algo == "Markov":
         results = call_markov_algo(subject, obj, clust, rel_name, nb_supports, driver)
 
+    if type(results) != np.ndarray: 
+        return(None, None, None)
+     
     communities = np.unique(results.transpose()[1])
 
     main_communities = [[community, len(np.where(results == community)[0])] for community in communities if len(np.where(results == community)[0]) >= nb_nodes_clust]
